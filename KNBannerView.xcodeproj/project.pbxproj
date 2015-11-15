@@ -14,6 +14,12 @@
 		3CEB6D331BEC39650020765C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D321BEC39650020765C /* Images.xcassets */; };
 		3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D341BEC39650020765C /* LaunchScreen.xib */; };
 		3CEB6D421BEC39650020765C /* KNBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D411BEC39650020765C /* KNBannerViewTests.m */; };
+		7933D8391BF7621600190AB3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7933D8381BF7621600190AB3 /* UIView+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		7933D83C1BF7626B00190AB3 /* KNJudgementTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7933D83B1BF7626B00190AB3 /* KNJudgementTool.m */; settings = {ASSET_TAGS = (); }; };
+		7933D83F1BF76DAB00190AB3 /* KNCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7933D83E1BF76DAB00190AB3 /* KNCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		794D2E221BF8572B007C92E1 /* NSData+KNCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D2E211BF8572B007C92E1 /* NSData+KNCache.m */; settings = {ASSET_TAGS = (); }; };
+		794D2E251BF85A12007C92E1 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D2E241BF85A12007C92E1 /* NSString+Hash.m */; settings = {ASSET_TAGS = (); }; };
+		79CA643A1BF75F3600F4AF99 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CA64391BF75F3600F4AF99 /* KNBannerView.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +46,18 @@
 		3CEB6D3B1BEC39650020765C /* KNBannerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KNBannerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEB6D401BEC39650020765C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CEB6D411BEC39650020765C /* KNBannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNBannerViewTests.m; sourceTree = "<group>"; };
+		7933D8371BF7621600190AB3 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		7933D8381BF7621600190AB3 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		7933D83A1BF7626B00190AB3 /* KNJudgementTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNJudgementTool.h; sourceTree = "<group>"; };
+		7933D83B1BF7626B00190AB3 /* KNJudgementTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNJudgementTool.m; sourceTree = "<group>"; };
+		7933D83D1BF76DAB00190AB3 /* KNCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCollectionViewCell.h; sourceTree = "<group>"; };
+		7933D83E1BF76DAB00190AB3 /* KNCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCollectionViewCell.m; sourceTree = "<group>"; };
+		794D2E201BF8572B007C92E1 /* NSData+KNCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+KNCache.h"; sourceTree = "<group>"; };
+		794D2E211BF8572B007C92E1 /* NSData+KNCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+KNCache.m"; sourceTree = "<group>"; };
+		794D2E231BF85A12007C92E1 /* NSString+Hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Hash.h"; sourceTree = "<group>"; };
+		794D2E241BF85A12007C92E1 /* NSString+Hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Hash.m"; sourceTree = "<group>"; };
+		79CA64381BF75F3600F4AF99 /* KNBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerView.h; sourceTree = "<group>"; };
+		79CA64391BF75F3600F4AF99 /* KNBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +103,7 @@
 				3CEB6D2A1BEC39650020765C /* AppDelegate.m */,
 				3CEB6D2C1BEC39650020765C /* ViewController.h */,
 				3CEB6D2D1BEC39650020765C /* ViewController.m */,
+				79CA64371BF75F2800F4AF99 /* KNBannerView */,
 				3CEB6D2F1BEC39650020765C /* Main.storyboard */,
 				3CEB6D321BEC39650020765C /* Images.xcassets */,
 				3CEB6D341BEC39650020765C /* LaunchScreen.xib */,
@@ -117,6 +136,25 @@
 				3CEB6D401BEC39650020765C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79CA64371BF75F2800F4AF99 /* KNBannerView */ = {
+			isa = PBXGroup;
+			children = (
+				7933D83A1BF7626B00190AB3 /* KNJudgementTool.h */,
+				7933D83B1BF7626B00190AB3 /* KNJudgementTool.m */,
+				794D2E231BF85A12007C92E1 /* NSString+Hash.h */,
+				794D2E241BF85A12007C92E1 /* NSString+Hash.m */,
+				794D2E201BF8572B007C92E1 /* NSData+KNCache.h */,
+				794D2E211BF8572B007C92E1 /* NSData+KNCache.m */,
+				7933D8371BF7621600190AB3 /* UIView+Extension.h */,
+				7933D8381BF7621600190AB3 /* UIView+Extension.m */,
+				7933D83D1BF76DAB00190AB3 /* KNCollectionViewCell.h */,
+				7933D83E1BF76DAB00190AB3 /* KNCollectionViewCell.m */,
+				79CA64381BF75F3600F4AF99 /* KNBannerView.h */,
+				79CA64391BF75F3600F4AF99 /* KNBannerView.m */,
+			);
+			path = KNBannerView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +257,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7933D8391BF7621600190AB3 /* UIView+Extension.m in Sources */,
 				3CEB6D2E1BEC39650020765C /* ViewController.m in Sources */,
 				3CEB6D2B1BEC39650020765C /* AppDelegate.m in Sources */,
 				3CEB6D281BEC39650020765C /* main.m in Sources */,
+				794D2E251BF85A12007C92E1 /* NSString+Hash.m in Sources */,
+				7933D83F1BF76DAB00190AB3 /* KNCollectionViewCell.m in Sources */,
+				7933D83C1BF7626B00190AB3 /* KNJudgementTool.m in Sources */,
+				794D2E221BF8572B007C92E1 /* NSData+KNCache.m in Sources */,
+				79CA643A1BF75F3600F4AF99 /* KNBannerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +462,7 @@
 				3CEB6D471BEC39650020765C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3CEB6D481BEC39650020765C /* Build configuration list for PBXNativeTarget "KNBannerViewTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +471,7 @@
 				3CEB6D4A1BEC39650020765C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
