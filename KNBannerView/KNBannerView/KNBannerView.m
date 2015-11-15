@@ -307,7 +307,7 @@ static NSString *ID = @"KNCollectionView";
     if (_collectionView.contentOffset.x == 0 &&  _imagesCount) {
         [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imagesCount * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
-    // 4 * 10 + ( 4 - 1) * 5 : pageControl 根据枚举来设定位置
+    // 4 * 10 + ( 4 - 1) * 5 : pageControl base enum to set frame
     switch (_pageControlStyle) {
         case KNPageControlStyleMiddle:
             _pageControl.frame = CGRectMake(0, self.height - 30 + self.y, self.width, 30);
