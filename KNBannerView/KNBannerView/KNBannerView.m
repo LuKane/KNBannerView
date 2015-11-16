@@ -62,16 +62,11 @@ static NSString *ID = @"KNCollectionView";
     return bannerView;
 }
 
-- (void)setFrame:(CGRect)frame{
-    [super setFrame:frame];
-    _layout.itemSize = frame.size;
-}
-
 - (void)initializeCollectionView{
     
     // 1.create layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init]; // create layout
-    layout.itemSize = CGSizeMake(self.width, 180 + 64); // set layout flow size
+    layout.itemSize = CGSizeMake(self.width, self.height + 64); // set layout flow size
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal; // flow direction
@@ -79,13 +74,18 @@ static NSString *ID = @"KNCollectionView";
     
     // 2.create collectView
     UICollectionView *collectView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height) collectionViewLayout:layout];
+    
     [collectView setBackgroundColor:[UIColor clearColor]];
     [collectView setPagingEnabled:YES]; // open collectionView's page control
-    [collectView setShowsHorizontalScrollIndicator:NO];
-    [collectView setShowsVerticalScrollIndicator:NO];
+    
     [collectView registerClass:[KNCollectionViewCell class] forCellWithReuseIdentifier:ID];// register cell
+    
     [collectView setDataSource:self];
     [collectView setDelegate:self];
+    
+    [collectView setShowsHorizontalScrollIndicator:NO];
+    [collectView setShowsVerticalScrollIndicator:NO];
+    
     [self addSubview:collectView];
     _collectionView = collectView;
     
@@ -314,7 +314,6 @@ static NSString *ID = @"KNCollectionView";
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
     if (_collectionView.contentOffset.x == 0 &&  _imagesCount) {
         [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imagesCount * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }

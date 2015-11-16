@@ -88,7 +88,9 @@
     _imageView.frame = self.bounds;
     
     CGFloat Height = _IntroduceHeight?_IntroduceHeight:30;
+    
     _bgView.frame = CGRectMake(0, self.height - Height - 64, self.width, Height);
+    
     _IntroduceLabel.frame = CGRectMake(0, 0, _bgView.width, _bgView.height);
     
     switch (_IntroduceStyle) {

@@ -56,7 +56,7 @@
     [IntroduceArr addObject:string5];
     
     // 1.本地图片加载
-//    KNBannerView *bannerView = [KNBannerView bannerViewWithLocationImagesArr:imgArr frame:CGRectMake(0, 20, self.view.frame.size.width, 180)];
+//    KNBannerView *bannerView = [KNBannerView bannerViewWithLocationImagesArr:imgArr frame:CGRectMake(0, 64, self.view.frame.size.width, 180)];
     
     
     // 2.网络图片加载
@@ -84,7 +84,7 @@
 }
 
 - (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
-    
+    NSLog(@"%zd",index);
 }
 
 @end

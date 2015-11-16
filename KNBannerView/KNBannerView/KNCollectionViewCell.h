@@ -42,6 +42,8 @@ typedef enum {
 /* IntroduceString TextFont ,Default is Heiti SC 15 */
 @property (nonatomic, strong) UIFont *IntroduceTextFont;
 
+@property (nonatomic, assign) CGFloat cellHeight;
+
 /* IntroduceLabel is set or not */
 @property (nonatomic, assign) BOOL isSet;
 
