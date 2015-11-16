@@ -15,7 +15,17 @@ typedef enum {
     KNPageControlStyleMiddle
 }KNPageControlStyle;
 
+@protocol KNBannerViewDelegate <NSObject>
+
+@optional
+- (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
+
+@end
+
+
 @interface KNBannerView : UIView
+
+@property (nonatomic, weak) id<KNBannerViewDelegate> delegate;
 
 /* timer's time .Default is 1.5 seconds */
 @property (nonatomic, assign) CGFloat timeInterval;

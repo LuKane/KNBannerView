@@ -11,7 +11,7 @@
 
 #import "NSData+KNCache.h"
 
-@interface ViewController ()
+@interface ViewController ()<KNBannerViewDelegate>
 
 @end
 
@@ -59,6 +59,8 @@
     
     // 2.网络图片加载
     KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:imgArr frame:CGRectMake(0, 20, self.view.width, 180)];
+    bannerView.delegate = self;
+    
     
     bannerView.IntroduceStringArr = IntroduceArr;
     bannerView.placeHolder = @"3";
@@ -79,7 +81,8 @@
     [self.view addSubview:bannerView];
 }
 
-
-
+- (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
+    NSLog(@"%zd被点击",index);
+}
 
 @end

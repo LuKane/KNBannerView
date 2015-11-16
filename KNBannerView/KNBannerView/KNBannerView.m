@@ -138,7 +138,10 @@ static NSString *ID = @"KNCollectionView";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    NSInteger row = indexPath.row % self.IMGArray.count;
+    if([_delegate respondsToSelector:@selector(KNBannerView:didSelectItemAtIndexPath:)]){
+        [_delegate KNBannerView:collectionView didSelectItemAtIndexPath:row];
+    }
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
