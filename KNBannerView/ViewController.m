@@ -20,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     NSMutableArray *imgArr = [NSMutableArray array];
     
 //    NSString *img1 = @"1";
@@ -58,7 +60,7 @@
     
     
     // 2.网络图片加载
-    KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:imgArr frame:CGRectMake(0, 20, self.view.width, 180)];
+    KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:imgArr frame:CGRectMake(0, 64, self.view.width, 180)];
     bannerView.delegate = self;
     
     
@@ -82,7 +84,7 @@
 }
 
 - (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
-    NSLog(@"%zd被点击",index);
+    
 }
 
 @end
