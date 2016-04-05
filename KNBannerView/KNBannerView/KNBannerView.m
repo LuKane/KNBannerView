@@ -237,6 +237,12 @@ static NSString *ID = @"KNCollectionView";
     [self setupPageControl];
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview{
+    if(!newSuperview){ // 当父视图改变的时候, 要判断新的父视图是否存在
+        [self removeTimer];
+    }
+}
+
 /***************************Divder************************/
 
 - (void)loadNetWorkImageWithIndex:(NSInteger)index{
