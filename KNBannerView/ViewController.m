@@ -83,7 +83,7 @@
     [self.view addSubview:bannerView];
 }
 
-- (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
+- (void)bannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
     NSLog(@"%zd",index);
 }
 
