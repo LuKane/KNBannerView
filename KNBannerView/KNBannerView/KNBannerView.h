@@ -18,7 +18,7 @@ typedef enum {
 @protocol KNBannerViewDelegate <NSObject>
 
 @optional
-- (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
+- (void)bannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
 
 @end
 

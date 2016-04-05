@@ -145,8 +145,8 @@ static NSString *ID = @"KNCollectionView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = indexPath.row % _IMGArray.count;
-    if([_delegate respondsToSelector:@selector(KNBannerView:didSelectItemAtIndexPath:)]){
-        [_delegate KNBannerView:collectionView didSelectItemAtIndexPath:row];
+    if([_delegate respondsToSelector:@selector(bannerView:didSelectItemAtIndexPath:)]){
+        [_delegate bannerView:collectionView didSelectItemAtIndexPath:row];
     }
 }
 
