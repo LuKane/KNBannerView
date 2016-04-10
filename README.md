@@ -1,6 +1,4 @@
 # KNBannerView
-无限循环轮播器:本地图片,网络图片(缓存)
-# KNBannerView
 无限循环轮播器:本地图片,网络图片(图片缓存)
 #KNBannerView
 
@@ -50,6 +48,6 @@
 
 ###5.图片的点击
 ####1>遵守 KNBannerViewDelegate
-#####2>设代理为自己 bannerView.delegate = self;
-#####3>执行方法 - (void)KNBannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
+#####2>设代理 bannerView.delegate = self;
+#####3>执行方法 - (void)bannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
 
