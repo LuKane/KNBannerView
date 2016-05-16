@@ -39,6 +39,6 @@ bannerView.IntroduceHeight = 60;
 bannerView.IntroduceTextColor = [UIColor redColor];
 ```
 ###5.图片的点击
-####1>遵守 KNBannerViewDelegate
+#####1>遵守 KNBannerViewDelegate
 #####2>设代理 bannerView.delegate = self;
 #####3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
