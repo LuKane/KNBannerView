@@ -1,5 +1,6 @@
 # KNBannerView
 无限循环轮播器:本地图片,网络图片(图片缓存)
+
 ![bannerView.gif](http://upload-images.jianshu.io/upload_images/1693073-e2ea5371f543a1bc.gif?imageMogr2/auto-orient/strip)
 ##一.功能描述及要点
 * 1.无限图片轮播器,加载本地图片或网络图片
