@@ -3,15 +3,10 @@
 
 ##一.功能描述及要点
 * 1.无限图片轮播器,加载本地图片或网络图片
-
 * 2.NSURLSession下载网络图片,沙盒路径存储图片(路径名:MD5加密)
-
 * 3.通过代理方法执行图片的点击事件
-
 * 4.collectView工作原理实现无限滚动
-
 * 5.设置UIPageControl的位置:(左,中,右) 以及颜色设置
-
 * 6.设置描述文字的位置:(左,中,右) 以及字体颜色,大小,背景颜色
 * 7.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 
