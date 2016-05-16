@@ -66,14 +66,14 @@ static NSString *ID = @"KNCollectionView";
     
     // 1.create layout
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init]; // create layout
-    layout.itemSize = CGSizeMake(self.width, self.height + 64); // set layout flow size
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
-    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal; // flow direction
+    [layout setItemSize:self.size];// set layout size
+    [layout setMinimumInteritemSpacing:0];
+    [layout setMinimumLineSpacing:0];
+    [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     _layout = layout;
     
     // 2.create collectView
-    UICollectionView *collectView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height) collectionViewLayout:layout];
+    UICollectionView *collectView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     
     [collectView setBackgroundColor:[UIColor clearColor]];
     [collectView setPagingEnabled:YES]; // open collectionView's page control
@@ -105,11 +105,9 @@ static NSString *ID = @"KNCollectionView";
     _IntroduceStyle = KNIntroduceStyleLeft;
     _IntroduceHeight = 30;
     _timeInterval = 1.5;
-    
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return _imagesCount;
 }
@@ -145,8 +143,8 @@ static NSString *ID = @"KNCollectionView";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = indexPath.row % _IMGArray.count;
-    if([_delegate respondsToSelector:@selector(bannerView:didSelectItemAtIndexPath:)]){
-        [_delegate bannerView:collectionView didSelectItemAtIndexPath:row];
+    if([_delegate respondsToSelector:@selector(bannerView:collectionView:didSelectItemAtIndexPath:)]){
+        [_delegate bannerView:(KNBannerView *)self collectionView:collectionView didSelectItemAtIndexPath:row];
     }
 }
 

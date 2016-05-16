@@ -15,10 +15,12 @@ typedef enum {
     KNPageControlStyleMiddle
 }KNPageControlStyle;
 
+@class KNBannerView;
+
 @protocol KNBannerViewDelegate <NSObject>
 
 @optional
-- (void)bannerView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
+- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
 
 @end
 
