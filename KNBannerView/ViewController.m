@@ -102,7 +102,7 @@
     bannerView.IntroduceTextFont = [UIFont systemFontOfSize:17];// 介绍文字字体大小
     bannerView.IntroduceBackGroundAlpha = 1.0;// 介绍文字的透明度
     bannerView.IntroduceBackGroundColor = [UIColor blackColor]; // 介绍文字的背景色
-//    bannerView.IntroduceHeight = 60;// 介绍文字的高度
+//    bannerView.IntroduceHeight = 60;// 介绍文字的高度   
     bannerView.IntroduceTextColor = [UIColor orangeColor]; // 介绍文字的颜色
     bannerView.PageIndicatorTintColor = [UIColor whiteColor];// pageControl的 其他'点'的颜色
     bannerView.CurrentPageIndicatorTintColor = [UIColor orangeColor];// pageControl的 当前'点'的颜色
