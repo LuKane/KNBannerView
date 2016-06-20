@@ -6,10 +6,10 @@
 //  Copyright © 2015年 KNKane. All rights reserved.
 //
 
-#import "NSString+Hash.h"
+#import "NSString+hash.h"
 #import <CommonCrypto/CommonCrypto.h>
 
-@implementation NSString (Hash)
+@implementation NSString (hash)
 
 #pragma mark - 散列函数
 - (NSString *)md5String {
