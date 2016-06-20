@@ -7,7 +7,7 @@
 //
 
 #import "NSData+KNCache.h"
-#import "NSString+Hash.h"
+#import "NSString+hash.h"
 
 @implementation NSData (KNCache)
 
