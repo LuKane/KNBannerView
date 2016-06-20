@@ -8,8 +8,14 @@
 
 #import "KNBannerView.h"
 #import "NSData+KNCache.h"
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <SystemConfiguration/SystemConfiguration.h>
 
-@interface KNBannerView()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface KNBannerView()<UICollectionViewDataSource,UICollectionViewDelegate>{
+    NSInteger _networkConnectTime;
+}
 
 @property (nonatomic, weak) UICollectionView *collectionView; // main view for flow
 @property (nonatomic, weak) UICollectionViewFlowLayout *layout;// flow
@@ -58,7 +64,6 @@ static NSString *ID = @"KNCollectionView";
     }
     
     bannerView.netWorkImgArr = [NSMutableArray arrayWithArray:netWorkImgArr];
-    
     return bannerView;
 }
 
@@ -267,7 +272,14 @@ static NSString *ID = @"KNCollectionView";
                 });
             }else{
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self loadNetWorkImageWithIndex:index];
+                    // if cannotConnectToNetWork or require time above 5 : return
+                    if(_networkConnectTime > 5 || ![self getCanConnectToNetWork]){
+                        return ;
+                    }else{
+                        _networkConnectTime++;
+                        [self loadNetWorkImageWithIndex:index];
+                    }
+                    
                 });
             }
         }];
@@ -335,6 +347,25 @@ static NSString *ID = @"KNCollectionView";
         default:
             break;
     }
+}
+
+- (BOOL)getCanConnectToNetWork{
+    struct sockaddr_in zeroAddress;
+    bzero(&zeroAddress,sizeof(zeroAddress));
+    zeroAddress.sin_len = sizeof(zeroAddress);
+    zeroAddress.sin_family = AF_INET;
+    
+    SCNetworkReachabilityRef defaultRouteReachabiltiy = SCNetworkReachabilityCreateWithAddress(NULL,  (struct sockaddr *) & zeroAddress);
+    SCNetworkReachabilityFlags flags;
+    
+    BOOL didRetriveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachabiltiy, &flags);
+    if(!didRetriveFlags){
+        return NO;
+    }
+    BOOL isReachable = flags & kSCNetworkFlagsReachable;
+    
+    BOOL needsConnect=flags & kSCNetworkFlagsConnectionRequired;
+    return (isReachable && !needsConnect)? YES:NO;
 }
 
 
