@@ -273,7 +273,8 @@ static NSString *ID = @"KNCollectionView";
             }else{
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     // if cannotConnectToNetWork or require time above 5 : return
-                    if(_networkConnectTime > 5 || ![self getCanConnectToNetWork]){
+                    if(_networkConnectTime > 5 || ![self getNetWorkStatus]){
+                        NSLog(@"time:%zd",_networkConnectTime);
                         return ;
                     }else{
                         _networkConnectTime++;
@@ -348,25 +349,30 @@ static NSString *ID = @"KNCollectionView";
     }
 }
 
-- (BOOL)getCanConnectToNetWork{
-    
-    struct sockaddr_in zeroAddress;
-    bzero(&zeroAddress,sizeof(zeroAddress));
-    zeroAddress.sin_len = sizeof(zeroAddress);
-    zeroAddress.sin_family = AF_INET;
-    
-    SCNetworkReachabilityRef defaultRouteReachabiltiy = SCNetworkReachabilityCreateWithAddress(NULL,  (struct sockaddr *) & zeroAddress);
-    SCNetworkReachabilityFlags flags;
-    
-    BOOL didRetriveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachabiltiy, &flags);
-    if(!didRetriveFlags){
-        return NO;
+#pragma mark get net work style : can connect to network or not
+- (BOOL)getNetWorkStatus{
+    UIApplication *app = [UIApplication sharedApplication];
+    NSArray *children = [[[app valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"]subviews];
+    int netType = 0;
+    for (id child in children) {
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
+            //获取到状态栏
+            netType = [[child valueForKeyPath:@"dataNetworkType"] intValue];
+            switch (netType) {
+                case 0:
+                    return NO;
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                case 5:
+                    return YES;
+                default:
+                    break;
+            }
+        }
     }
-    BOOL isReachable = flags & kSCNetworkFlagsReachable;
-    
-    BOOL needsConnect=flags & kSCNetworkFlagsConnectionRequired;
-    return (isReachable && !needsConnect)? YES:NO;
+    return NO;
 }
-
 
 @end
