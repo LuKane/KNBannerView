@@ -241,7 +241,7 @@ static NSString *ID = @"KNCollectionView";
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview{
-    if(!newSuperview){ // 当父视图改变的时候, 要判断新的父视图是否存在
+    if(!newSuperview){ // when super view changed, judge it is exist or not
         [self removeTimer];
     }
 }
@@ -274,7 +274,6 @@ static NSString *ID = @"KNCollectionView";
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     // if cannotConnectToNetWork or require time above 5 : return
                     if(_networkConnectTime > 5 || ![self getNetWorkStatus]){
-                        NSLog(@"time:%zd",_networkConnectTime);
                         return ;
                     }else{
                         _networkConnectTime++;
@@ -356,7 +355,7 @@ static NSString *ID = @"KNCollectionView";
     int netType = 0;
     for (id child in children) {
         if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")]) {
-            //获取到状态栏
+            // get status style
             netType = [[child valueForKeyPath:@"dataNetworkType"] intValue];
             switch (netType) {
                 case 0:
