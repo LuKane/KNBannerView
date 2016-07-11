@@ -1,7 +1,7 @@
 # KNBannerView
 无限循环轮播器:本地图片,网络图片(图片缓存)
 
-![bannerView.gif](http://upload-images.jianshu.io/upload_images/1693073-e2ea5371f543a1bc.gif?imageMogr2/auto-orient/strip)
+![banner.gif](http://upload-images.jianshu.io/upload_images/1693073-0ed316cfef4b1eb9.gif?imageMogr2/auto-orient/strip)
 ##一.功能描述及要点
 * 1.无限图片轮播器,加载本地图片或网络图片
 * 2.NSURLSession下载网络图片,沙盒路径存储图片(路径名:MD5加密)
@@ -29,6 +29,7 @@ bannerView.placeHolder = @"3";
 bannerView.PageIndicatorTintColor = [UIColor whiteColor];
 bannerView.CurrentPageIndicatorTintColor = [UIColor blackColor];
 bannerView.pageControlStyle = KNPageControlStyleRight;
+bannerView.textShowStyle = KNTextShowStyleStay; // 滚动样式: normal || FadeOut || stay
 ```
 
 ###4.设置bannerView 介绍文字的属性
