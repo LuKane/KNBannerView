@@ -20,6 +20,7 @@
 		79C3FE041BFA0E3900548D28 /* NSData+KNCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDFC1BFA0E3900548D28 /* NSData+KNCache.m */; };
 		79C3FE051BFA0E3900548D28 /* NSString+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDFE1BFA0E3900548D28 /* NSString+hash.m */; };
 		79C3FE061BFA0E3900548D28 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FE001BFA0E3900548D28 /* UIView+Extension.m */; };
+		79F411961D332C5F00539FD6 /* KNCollectionViewTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		79C3FDFE1BFA0E3900548D28 /* NSString+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hash.m"; sourceTree = "<group>"; };
 		79C3FDFF1BFA0E3900548D28 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		79C3FE001BFA0E3900548D28 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		79F411941D332C5F00539FD6 /* KNCollectionViewTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCollectionViewTextView.h; sourceTree = "<group>"; };
+		79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCollectionViewTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				79C3FDF61BFA0E3900548D28 /* KNBannerView.m */,
 				79C3FDF71BFA0E3900548D28 /* KNCollectionViewCell.h */,
 				79C3FDF81BFA0E3900548D28 /* KNCollectionViewCell.m */,
+				79F411941D332C5F00539FD6 /* KNCollectionViewTextView.h */,
+				79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */,
 				79C3FDF91BFA0E3900548D28 /* KNJudgementTool.h */,
 				79C3FDFA1BFA0E3900548D28 /* KNJudgementTool.m */,
 				79C3FDFB1BFA0E3900548D28 /* NSData+KNCache.h */,
@@ -258,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79C3FE061BFA0E3900548D28 /* UIView+Extension.m in Sources */,
+				79F411961D332C5F00539FD6 /* KNCollectionViewTextView.m in Sources */,
 				3CEB6D2E1BEC39650020765C /* ViewController.m in Sources */,
 				79C3FE051BFA0E3900548D28 /* NSString+hash.m in Sources */,
 				3CEB6D2B1BEC39650020765C /* AppDelegate.m in Sources */,

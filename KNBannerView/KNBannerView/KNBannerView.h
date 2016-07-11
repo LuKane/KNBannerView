@@ -51,6 +51,10 @@ typedef enum {
 /* pageControlStyle ,Default is AligmentRight */
 @property (nonatomic, assign) KNPageControlStyle pageControlStyle;
 
+
+/* text show style , Default is normal flow the cell  KNTextShowStyleNormal */
+@property (nonatomic, assign) KNTextShowStyle textShowStyle;
+
 /***************************Divder************************/
 
 /* Array IntroduceString for display, if don't need one of them ,just put that one empty */

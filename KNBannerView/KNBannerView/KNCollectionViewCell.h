@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+Extension.h"
-#import "KNJudgementTool.h"
-
-typedef enum {
-    KNIntroduceStyleLeft,
-    KNIntroduceStyleMiddle,
-    KNIntroduceStyleRight
-}KNIntroduceStyle;
+#import "KNCollectionViewTextView.h"
 
 @interface KNCollectionViewCell : UICollectionViewCell
 
@@ -42,9 +36,13 @@ typedef enum {
 /* IntroduceString TextFont ,Default is Heiti SC 15 */
 @property (nonatomic, strong) UIFont *IntroduceTextFont;
 
-@property (nonatomic, assign) CGFloat cellHeight;
-
 /* IntroduceLabel is set or not */
 @property (nonatomic, assign) BOOL isSet;
+
+/* textLabel style and backGround style */
+@property (nonatomic, weak  ) KNCollectionViewTextView *IntroduceBgView;
+
+/* this is a flag for is not textShowStyleNormal , Default is YES */
+@property (nonatomic, assign) BOOL isShowStyleNormal;
 
 @end

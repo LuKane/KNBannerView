@@ -68,6 +68,7 @@
     bannerView.IntroduceStringArr = IntroduceArr;
     /****************************** == 占位图 == ********************************/
     bannerView.placeHolder = @"3";
+    bannerView.textShowStyle = KNTextShowStyleStay;
     bannerView.tag = 100;
     [self.view addSubview:bannerView];
 }
@@ -98,7 +99,7 @@
     [IntroduceArr addObject:string4];
     [IntroduceArr addObject:string5];
     bannerView.IntroduceStringArr = IntroduceArr;
-    bannerView.timeInterval = 2; // 图片轮播的时间间隔
+    bannerView.timeInterval = 1.5; // 图片轮播的时间间隔
     bannerView.IntroduceTextFont = [UIFont systemFontOfSize:17];// 介绍文字字体大小
     bannerView.IntroduceBackGroundAlpha = 1.0;// 介绍文字的透明度
     bannerView.IntroduceBackGroundColor = [UIColor blackColor]; // 介绍文字的背景色
@@ -108,7 +109,7 @@
     bannerView.CurrentPageIndicatorTintColor = [UIColor orangeColor];// pageControl的 当前'点'的颜色
     bannerView.pageControlStyle = KNPageControlStyleLeft;// pageControl 对其方式
     bannerView.IntroduceStyle = KNIntroduceStyleRight;// 介绍文字的对其方式
-    
+    bannerView.textShowStyle = KNTextShowStyleFadeOut;// 介绍文字的 显示样式 : 滚动 || 显现 || 直接切换
     bannerView.delegate = self;
     bannerView.tag = 200;
     [self.view addSubview:bannerView];

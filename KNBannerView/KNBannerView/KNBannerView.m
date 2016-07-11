@@ -12,9 +12,12 @@
 #import <netinet/in.h>
 #import <arpa/inet.h>
 #import <SystemConfiguration/SystemConfiguration.h>
+#import "KNCollectionViewTextView.h"
 
 @interface KNBannerView()<UICollectionViewDataSource,UICollectionViewDelegate>{
-    NSInteger _networkConnectTime;
+    NSInteger                 _networkConnectTime;
+    KNCollectionViewCell     *_collectionViewCell;
+    KNCollectionViewTextView *_textView;
 }
 
 @property (nonatomic, weak) UICollectionView *collectionView; // main view for flow
@@ -98,18 +101,17 @@ static NSString *ID = @"KNCollectionView";
 }
 
 - (void)initDefaultData{
-    
-    _pageControlStyle = KNPageControlStyleRight;
+    _pageControlStyle              = KNPageControlStyleRight;
     _CurrentPageIndicatorTintColor = [UIColor whiteColor];
-    _PageIndicatorTintColor = [UIColor grayColor];
-    
-    _IntroduceBackGroundColor = [UIColor blackColor];
-    _IntroduceTextColor = [UIColor whiteColor];
-    _IntroduceBackGroundAlpha = 0.5;
-    _IntroduceTextFont = [UIFont fontWithName:@"Heiti SC" size:15];
-    _IntroduceStyle = KNIntroduceStyleLeft;
-    _IntroduceHeight = 30;
-    _timeInterval = 1.5;
+    _PageIndicatorTintColor        = [UIColor grayColor];
+    _IntroduceBackGroundColor      = [UIColor blackColor];
+    _IntroduceTextColor            = [UIColor whiteColor];
+    _IntroduceBackGroundAlpha      = 0.5;
+    _IntroduceTextFont             = [UIFont fontWithName:@"Heiti SC" size:15];
+    _IntroduceStyle                = KNIntroduceStyleLeft;
+    _textShowStyle                 = KNTextShowStyleNormal;
+    _IntroduceHeight               = 30;
+    _timeInterval                  = 1.5;
 }
 
 #pragma mark - UICollectionViewDataSource & UICollectionViewDelegate
@@ -118,11 +120,11 @@ static NSString *ID = @"KNCollectionView";
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
     NSInteger row = indexPath.row % self.IMGArray.count;
-    
     _pageControl.currentPage = row;
     KNCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    _collectionViewCell = cell;
+    
     UIImage *image = _IMGArray[row];
     if(image.size.width){
         cell.imageView.image = _IMGArray[row];
@@ -133,16 +135,22 @@ static NSString *ID = @"KNCollectionView";
     }
     
     if(!cell.isSet){
-        cell.IntroduceStyle = _IntroduceStyle;
+        cell.IntroduceStyle           = _IntroduceStyle;
         cell.IntroduceBackGroundColor = _IntroduceBackGroundColor;
-        cell.IntroduceTextColor = _IntroduceTextColor;
+        cell.IntroduceTextColor       = _IntroduceTextColor;
         cell.IntroduceBackGroundAlpha = _IntroduceBackGroundAlpha;
-        cell.IntroduceTextFont = _IntroduceTextFont;
-        cell.IntroduceHeight = _IntroduceHeight;
-        cell.isSet = YES;
+        cell.IntroduceTextFont        = _IntroduceTextFont;
+        cell.IntroduceHeight          = _IntroduceHeight;
+        
+        if(_textShowStyle == KNTextShowStyleNormal){
+            cell.isShowStyleNormal    = YES;
+        }else{
+            cell.isShowStyleNormal    = NO;
+        }
+        
+        cell.isSet                    = YES;
     }
-    
-    cell.IntroduceString = _IntroduceStringArr.count?_IntroduceStringArr[row]:nil;
+    cell.IntroduceString              = _IntroduceStringArr.count?_IntroduceStringArr[row]:nil;
     return cell;
 }
 
@@ -187,6 +195,7 @@ static NSString *ID = @"KNCollectionView";
         [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+    if(_textView) [_textView setIntroduceString:_IntroduceStringArr.count?_IntroduceStringArr[index % _IntroduceStringArr.count]:nil];
 }
 
 - (void)setTimeInterval:(CGFloat)timeInterval{
@@ -327,11 +336,50 @@ static NSString *ID = @"KNCollectionView";
     _IntroduceStringArr = IntroduceStringArr;
 }
 
+#pragma mark TextShowStyle
+- (void)setTextShowStyle:(KNTextShowStyle)textShowStyle{
+    _textShowStyle = textShowStyle;
+    if(textShowStyle == KNTextShowStyleNormal){
+        _collectionViewCell.isShowStyleNormal = YES;
+        if(_textView){
+            [_textView removeFromSuperview];
+            _textView = nil;
+        }
+    }else{
+        _collectionViewCell.isShowStyleNormal = NO;
+        
+        // setup TextView and label
+        KNCollectionViewTextView *textView = [[KNCollectionViewTextView alloc] init];
+        textView.textShowStyle = textShowStyle;
+        _textView = textView;
+        [self insertSubview:textView belowSubview:_pageControl];
+        
+        // setup textView's label attribute
+        [self setupTextViewData];
+    }
+}
+
+#pragma mark setup  textView's label attribute
+- (void)setupTextViewData{
+    [_textView setIntroduceBackGroundColor:_IntroduceBackGroundColor];
+    [_textView setIntroduceBackGroundAlpha:_IntroduceBackGroundAlpha];
+    [_textView setIntroduceStyle:_IntroduceStyle];
+    [_textView setIntroduceTextColor:_IntroduceTextColor];
+    [_textView setIntroduceTextFont:_IntroduceTextFont];
+    [_textView setIntroduceString:_IntroduceStringArr.count?_IntroduceStringArr[0]:nil];
+    [_textView setShowTime:_timeInterval];
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     if (_collectionView.contentOffset.x == 0 &&  _imagesCount) {
         [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imagesCount * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
+    
+    if(_collectionViewCell.isShowStyleNormal == NO){
+        [_textView setFrame:(CGRect){{0,self.height - _IntroduceHeight},{self.width,_IntroduceHeight}}];
+    }
+    
     // 4 * 10 + ( 4 - 1) * 5 : pageControl base enum to set frame
     switch (_pageControlStyle) {
         case KNPageControlStyleMiddle:
