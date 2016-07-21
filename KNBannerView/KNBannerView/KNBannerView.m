@@ -172,6 +172,9 @@ static NSString *ID = @"KNCollectionView";
 /***************************Divder************************/
 
 - (void)setupTimer{
+    if(_locationImgArr.count == 1 || _netWorkImgArr.count == 1){
+        return;
+    }
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_timeInterval target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
     _timer = timer;
     

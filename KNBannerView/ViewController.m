@@ -44,10 +44,10 @@
     NSString *img4 = @"http://benyouhuifile.it168.com/forum/macos/attachments/month_1104/1104241737046031b3a754f783.jpg";
     NSString *img5 = @"http://2b.zol-img.com.cn/product/68/951/cerUrKWCmHCnU.jpg";
     [imgArr addObject:img1];
-    [imgArr addObject:img2];
-    [imgArr addObject:img3];
-    [imgArr addObject:img4];
-    [imgArr addObject:img5];
+//    [imgArr addObject:img2];
+//    [imgArr addObject:img3];
+//    [imgArr addObject:img4];
+//    [imgArr addObject:img5];
     
     // 设置 网络 轮播图
     KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:imgArr frame:CGRectMake(0, 64, self.view.width, 180)];
