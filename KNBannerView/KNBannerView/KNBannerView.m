@@ -98,6 +98,9 @@ static NSString *ID = @"KNCollectionView";
     _collectionView = collectView;
     
     [self initDefaultData];
+    
+    
+    
 }
 
 - (void)initDefaultData{
@@ -240,7 +243,11 @@ static NSString *ID = @"KNCollectionView";
 
 - (void)setIMGArray:(NSMutableArray *)IMGArray{
     _IMGArray = IMGArray;
-    _imagesCount = IMGArray.count * 50; // extension array cout for enough cell to display
+    if(IMGArray.count > 1){ // judge imageArray'count is equal one . if not ,imageCount * 50 --> 16/08/07
+        _imagesCount = IMGArray.count * 50; // extension array cout for enough cell to display
+    }else{ // else imageCount just equal one , so collectionView can not scroll forever
+        _imagesCount = IMGArray.count;
+    }
     
     if(IMGArray.count == 1){
         [self removeTimer];
@@ -354,6 +361,10 @@ static NSString *ID = @"KNCollectionView";
         // setup TextView and label
         KNCollectionViewTextView *textView = [[KNCollectionViewTextView alloc] init];
         textView.textShowStyle = textShowStyle;
+        
+        if(_netWorkImgArr.count == 1 || _locationImgArr.count == 1){// judge the count , so TextShowStyle will be Normal  --> 16/08/07
+            textView.textShowStyle = KNTextShowStyleNormal;
+        }
         _textView = textView;
         [self insertSubview:textView belowSubview:_pageControl];
         
