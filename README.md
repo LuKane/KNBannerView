@@ -9,7 +9,8 @@
 * 4.collectView工作原理实现无限滚动
 * 5.设置UIPageControl的位置:(左,中,右) 以及颜色设置
 * 6.设置描述文字的位置:(左,中,右) 以及字体颜色,大小,背景颜色
-* 7.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
+* 7.多张图片滚动时 文字的多种显示样式.单张图片时的样式
+* 8.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 
 ##二.方法定义及调用
 ###1.类方法创建BannerView:本地图片和网络图片
@@ -29,7 +30,7 @@ bannerView.placeHolder = @"3";
 bannerView.PageIndicatorTintColor = [UIColor whiteColor];
 bannerView.CurrentPageIndicatorTintColor = [UIColor blackColor];
 bannerView.pageControlStyle = KNPageControlStyleRight;
-bannerView.textShowStyle = KNTextShowStyleStay; // 滚动样式: normal || FadeOut || stay
+bannerView.textShowStyle = KNTextShowStyleStay; // 介绍文字的 显示样式 : 滚动 || 显现 || 直接切换
 ```
 
 ###4.设置bannerView 介绍文字的属性
@@ -39,6 +40,7 @@ bannerView.IntroduceBackGroundAlpha = 1.0;
 bannerView.IntroduceBackGroundColor = [UIColor greenColor];
 bannerView.IntroduceHeight = 60;
 bannerView.IntroduceTextColor = [UIColor redColor];
+bannerView.IntroduceStyle = KNIntroduceStyleRight;// 介绍文字的对其方式
 ```
 ###5.图片的点击
 #####1>遵守 KNBannerViewDelegate
