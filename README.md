@@ -30,7 +30,7 @@ bannerView.placeHolder = @"3";
 bannerView.PageIndicatorTintColor = [UIColor whiteColor];
 bannerView.CurrentPageIndicatorTintColor = [UIColor blackColor];
 bannerView.pageControlStyle = KNPageControlStyleRight;
-bannerView.textShowStyle = KNTextShowStyleStay; // 介绍文字的 显示样式 : 滚动 || 显现 || 直接切换
+bannerView.textShowStyle = KNTextShowStyleStay; // 介绍文字的 显示样式 : 滚动 || 渐显 || 停留
 ```
 
 ###4.设置bannerView 介绍文字的属性
