@@ -66,8 +66,18 @@
     [IntroduceArr addObject:string4];
     [IntroduceArr addObject:string5];
     bannerView.IntroduceStringArr = IntroduceArr;
+    bannerView.pageControlStyle = KNPageControlStyleRight;
+    bannerView.IntroduceBackGroundColor = [UIColor greenColor];
+    bannerView.IntroduceTextColor = [UIColor blackColor];
+    
+    /**
+     *  这一行如果 传入一个数字,那么就是自定义 pageControl, 若不传数组,则是系统默认UIPageControl
+     */
+    NSArray *arr = @[[UIImage imageNamed:@"pageControlSelected"], [UIImage imageNamed:@"pageControlUnSelected"]];
+    bannerView.customPageControlImgArr = [arr copy];
+    
     /****************************** == 占位图 == ********************************/
-    bannerView.placeHolder = @"3";
+    bannerView.placeHolder = [UIImage imageNamed:@"3"];
     bannerView.textShowStyle = KNTextShowStyleStay;
     bannerView.tag = 100;
     [self.view addSubview:bannerView];
@@ -104,9 +114,9 @@
     bannerView.IntroduceBackGroundAlpha = 1.0;// 介绍文字的透明度
     bannerView.IntroduceBackGroundColor = [UIColor blackColor]; // 介绍文字的背景色
 //    bannerView.IntroduceHeight = 60;// 介绍文字的高度   
-    bannerView.IntroduceTextColor = [UIColor orangeColor]; // 介绍文字的颜色
-    bannerView.PageIndicatorTintColor = [UIColor whiteColor];// pageControl的 其他'点'的颜色
-    bannerView.CurrentPageIndicatorTintColor = [UIColor orangeColor];// pageControl的 当前'点'的颜色
+    bannerView.IntroduceTextColor = [UIColor yellowColor]; // 介绍文字的颜色
+    bannerView.PageIndicatorTintColor = [UIColor orangeColor];// pageControl的 其他'点'的颜色
+    bannerView.CurrentPageIndicatorTintColor = [UIColor whiteColor];// pageControl的 当前'点'的颜色
     bannerView.pageControlStyle = KNPageControlStyleLeft;// pageControl 对其方式
     bannerView.IntroduceStyle = KNIntroduceStyleRight;// 介绍文字的对其方式
     bannerView.textShowStyle = KNTextShowStyleFadeOut;// 介绍文字的 显示样式 : 滚动 || 显现 || 直接切换
