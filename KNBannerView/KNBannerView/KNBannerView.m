@@ -18,6 +18,7 @@
     NSInteger                 _networkConnectTime;
     KNCollectionViewCell     *_collectionViewCell;
     KNCollectionViewTextView *_textView;
+    NSInteger                 _page; // 页数
 }
 
 @property (nonatomic, weak) UICollectionView *collectionView; // main view for flow
@@ -29,7 +30,8 @@
 
 @property (nonatomic, strong) NSMutableArray *IMGArray; // temp Array, for locationImg or netWorkImg(download img or get img from DataBase)
 
-@property (nonatomic, weak) UIPageControl *pageControl;
+//@property (nonatomic, weak) UIPageControl *pageControl;
+@property (nonatomic, weak  ) KNPageControl *pageControl;
 
 @end
 
@@ -96,15 +98,12 @@ static NSString *ID = @"KNCollectionView";
     
     [self addSubview:collectView];
     _collectionView = collectView;
-    
     [self initDefaultData];
-    
-    
-    
 }
 
 - (void)initDefaultData{
     _pageControlStyle              = KNPageControlStyleRight;
+    _isNeedPageControl             = YES;
     _CurrentPageIndicatorTintColor = [UIColor whiteColor];
     _PageIndicatorTintColor        = [UIColor grayColor];
     _IntroduceBackGroundColor      = [UIColor blackColor];
@@ -124,7 +123,9 @@ static NSString *ID = @"KNCollectionView";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = indexPath.row % self.IMGArray.count;
-    _pageControl.currentPage = row;
+    
+//    _pageControl.currentPage = row;
+    
     KNCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     _collectionViewCell = cell;
     
@@ -133,7 +134,7 @@ static NSString *ID = @"KNCollectionView";
         cell.imageView.image = _IMGArray[row];
     }else{
         if(_placeHolder){
-            cell.imageView.image = [UIImage imageNamed:_placeHolder];
+            cell.imageView.image = _placeHolder;
         }
     }
     
@@ -170,6 +171,14 @@ static NSString *ID = @"KNCollectionView";
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     [self setupTimer];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat scrollViewW = scrollView.frame.size.width;
+    CGFloat x = scrollView.contentOffset.x;
+    NSInteger page = (x + scrollViewW / 2) / scrollViewW;
+    
+    _pageControl.currentPage = page % _IMGArray.count;
 }
 
 /***************************Divder************************/
@@ -312,21 +321,36 @@ static NSString *ID = @"KNCollectionView";
     
     if(_pageControl) return;
     
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    KNPageControl *pageControl = [[KNPageControl alloc] init];
     _pageControl = pageControl;
-    _pageControl.currentPage = 0;
     _pageControl.numberOfPages = _IMGArray.count;
+    _pageControl.currentPage = 0;
+    _pageControl.pageControlStyle = _pageControlStyle;
     [self addSubview:pageControl];
 }
 
 - (void)setCurrentPageIndicatorTintColor:(UIColor *)CurrentPageIndicatorTintColor{
     _CurrentPageIndicatorTintColor = CurrentPageIndicatorTintColor;
-    _pageControl.currentPageIndicatorTintColor = CurrentPageIndicatorTintColor;
+    _pageControl.CurrentPageIndicatorTintColor = CurrentPageIndicatorTintColor;
 }
 
 - (void)setPageIndicatorTintColor:(UIColor *)PageIndicatorTintColor{
     _PageIndicatorTintColor = PageIndicatorTintColor;
-    _pageControl.pageIndicatorTintColor = PageIndicatorTintColor;
+    _pageControl.PageIndicatorTintColor = PageIndicatorTintColor;
+}
+
+- (void)setPageControlStyle:(KNPageControlStyle)pageControlStyle{
+    _pageControlStyle = pageControlStyle;
+    _pageControl.pageControlStyle = pageControlStyle;
+}
+
+- (void)setCustomPageControlImgArr:(NSArray *)customPageControlImgArr{
+    _customPageControlImgArr = customPageControlImgArr;
+    [_pageControl setImageArr:customPageControlImgArr];
+}
+
+- (void)setIsNeedPageControl:(BOOL)isNeedPageControl{
+    _pageControl.hidden = !isNeedPageControl;
 }
 
 - (void)setIntroduceStringArr:(NSMutableArray *)IntroduceStringArr{
@@ -394,20 +418,7 @@ static NSString *ID = @"KNCollectionView";
         [_textView setFrame:(CGRect){{0,self.height - _IntroduceHeight},{self.width,_IntroduceHeight}}];
     }
     
-    // 4 * 10 + ( 4 - 1) * 5 : pageControl base enum to set frame
-    switch (_pageControlStyle) {
-        case KNPageControlStyleMiddle:
-            _pageControl.frame = CGRectMake(0, self.height - 30 , self.width, 30);
-            break;
-        case KNPageControlStyleLeft:
-            _pageControl.frame = CGRectMake(10 - self.width * 0.5 + _IMGArray.count * 0.5 * 10 + (_IMGArray.count - 1)  * 0.5 * 5, self.height - 30, self.width, 30);
-            break;
-        case KNPageControlStyleRight:
-            _pageControl.frame = CGRectMake(self.width * 0.5 - ((_IMGArray.count) * 10 + (_IMGArray.count - 1) * 5) * 0.5 - 10, self.height - 30 ,self.width, 30);
-            break;
-        default:
-            break;
-    }
+    [_pageControl setFrame:(CGRect){{0,self.height - 30},{self.width,30}}];
 }
 
 #pragma mark get net work style : can connect to network or not

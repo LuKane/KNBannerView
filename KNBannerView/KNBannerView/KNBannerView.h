@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "KNCollectionViewCell.h"
+#import "KNPageControl.h"
 
-typedef enum {
-    KNPageControlStyleRight,
-    KNPageControlStyleLeft,
-    KNPageControlStyleMiddle
-}KNPageControlStyle;
+//typedef enum {
+//    KNPageControlStyleRight,
+//    KNPageControlStyleLeft,
+//    KNPageControlStyleMiddle
+//}KNPageControlStyle;
 
 @class KNBannerView;
 
@@ -32,7 +33,7 @@ typedef enum {
 /* timer's time .Default is 1.5 seconds */
 @property (nonatomic, assign) CGFloat timeInterval;
 /* placeHolder for download not completed */
-@property (nonatomic, copy) NSString *placeHolder;
+@property (nonatomic, copy) UIImage *placeHolder;
 
 /* locationImagesArray */
 @property (nonatomic, strong) NSMutableArray *locationImgArr;
@@ -51,6 +52,9 @@ typedef enum {
 /* pageControlStyle ,Default is AligmentRight */
 @property (nonatomic, assign) KNPageControlStyle pageControlStyle;
 
+@property (nonatomic, strong) NSArray *customPageControlImgArr;
+
+@property (nonatomic, assign) BOOL isNeedPageControl;
 
 /* text show style , Default is normal flow the cell  KNTextShowStyleNormal */
 @property (nonatomic, assign) KNTextShowStyle textShowStyle;
