@@ -20,6 +20,8 @@
 		79C3FE041BFA0E3900548D28 /* NSData+KNCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDFC1BFA0E3900548D28 /* NSData+KNCache.m */; };
 		79C3FE051BFA0E3900548D28 /* NSString+hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDFE1BFA0E3900548D28 /* NSString+hash.m */; };
 		79C3FE061BFA0E3900548D28 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FE001BFA0E3900548D28 /* UIView+Extension.m */; };
+		79D77F6F1D94EA7900E42EA5 /* KNPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D77F6E1D94EA7900E42EA5 /* KNPageControl.m */; };
+		79D77F721D94EBDC00E42EA5 /* KNCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D77F711D94EBDC00E42EA5 /* KNCustomPageControl.m */; };
 		79F411961D332C5F00539FD6 /* KNCollectionViewTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +61,10 @@
 		79C3FDFE1BFA0E3900548D28 /* NSString+hash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hash.m"; sourceTree = "<group>"; };
 		79C3FDFF1BFA0E3900548D28 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		79C3FE001BFA0E3900548D28 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		79D77F6D1D94EA7900E42EA5 /* KNPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNPageControl.h; sourceTree = "<group>"; };
+		79D77F6E1D94EA7900E42EA5 /* KNPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNPageControl.m; sourceTree = "<group>"; };
+		79D77F701D94EBDC00E42EA5 /* KNCustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCustomPageControl.h; sourceTree = "<group>"; };
+		79D77F711D94EBDC00E42EA5 /* KNCustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCustomPageControl.m; sourceTree = "<group>"; };
 		79F411941D332C5F00539FD6 /* KNCollectionViewTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCollectionViewTextView.h; sourceTree = "<group>"; };
 		79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCollectionViewTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +156,7 @@
 				79C3FDF81BFA0E3900548D28 /* KNCollectionViewCell.m */,
 				79F411941D332C5F00539FD6 /* KNCollectionViewTextView.h */,
 				79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */,
+				79D77F6C1D94EA7000E42EA5 /* KNPageControl */,
 				79C3FDF91BFA0E3900548D28 /* KNJudgementTool.h */,
 				79C3FDFA1BFA0E3900548D28 /* KNJudgementTool.m */,
 				79C3FDFB1BFA0E3900548D28 /* NSData+KNCache.h */,
@@ -160,6 +167,17 @@
 				79C3FE001BFA0E3900548D28 /* UIView+Extension.m */,
 			);
 			path = KNBannerView;
+			sourceTree = "<group>";
+		};
+		79D77F6C1D94EA7000E42EA5 /* KNPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				79D77F6D1D94EA7900E42EA5 /* KNPageControl.h */,
+				79D77F6E1D94EA7900E42EA5 /* KNPageControl.m */,
+				79D77F701D94EBDC00E42EA5 /* KNCustomPageControl.h */,
+				79D77F711D94EBDC00E42EA5 /* KNCustomPageControl.m */,
+			);
+			path = KNPageControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,8 +287,10 @@
 				3CEB6D2B1BEC39650020765C /* AppDelegate.m in Sources */,
 				79C3FE041BFA0E3900548D28 /* NSData+KNCache.m in Sources */,
 				3CEB6D281BEC39650020765C /* main.m in Sources */,
+				79D77F6F1D94EA7900E42EA5 /* KNPageControl.m in Sources */,
 				79C3FE021BFA0E3900548D28 /* KNCollectionViewCell.m in Sources */,
 				79C3FE031BFA0E3900548D28 /* KNJudgementTool.m in Sources */,
+				79D77F721D94EBDC00E42EA5 /* KNCustomPageControl.m in Sources */,
 				79C3FE011BFA0E3900548D28 /* KNBannerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
