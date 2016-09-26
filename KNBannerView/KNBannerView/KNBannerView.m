@@ -123,18 +123,15 @@ static NSString *ID = @"KNCollectionView";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     NSInteger row = indexPath.row % self.IMGArray.count;
-    
-//    _pageControl.currentPage = row;
-    
     KNCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     _collectionViewCell = cell;
     
     UIImage *image = _IMGArray[row];
     if(image.size.width){
-        cell.imageView.image = _IMGArray[row];
+        [cell.imageLayer setContents:(__bridge id _Nullable)image.CGImage];
     }else{
         if(_placeHolder){
-            cell.imageView.image = _placeHolder;
+            [cell.imageLayer setContents:(__bridge id _Nullable)_placeHolder.CGImage];
         }
     }
     
