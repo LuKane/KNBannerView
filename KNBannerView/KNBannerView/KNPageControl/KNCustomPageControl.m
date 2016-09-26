@@ -8,24 +8,35 @@
 
 #import "KNCustomPageControl.h"
 
+@interface KNCustomPageControl()
+
+@property (nonatomic, strong) NSMutableArray *layerArr;
+
+@end
+
 @implementation KNCustomPageControl{
     UIImage *_selectImg;
     UIImage *_unSelectImg;
 }
 
+- (NSMutableArray *)layerArr{
+    if (!_layerArr) {
+        _layerArr = [NSMutableArray array];
+    }
+    return _layerArr;
+}
+
 - (void)setCurrentPage:(NSInteger)currentPage{
     _currentPage = currentPage;
-    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImageView *imageView = (UIImageView *)obj;
-        
-        [imageView setImage:_unSelectImg];
-        
-        if(currentPage == idx){
+    for (NSInteger i = 0; i < _layerArr.count; i++) {
+        CALayer *layer = _layerArr[i];
+        [layer setContents:(__bridge id _Nullable)_unSelectImg.CGImage];
+        if(currentPage == i){
             if(_selectImg){
-                [imageView setImage:_selectImg];
+                [layer setContents:(__bridge id _Nullable)_selectImg.CGImage];
             }
         }
-    }];
+    }
 }
 
 - (void)setImageArr:(NSArray *)imageArr{
@@ -36,24 +47,25 @@
 
 - (void)setNumberOfPages:(NSInteger)numberOfPages{
     for (NSInteger i = 0; i < numberOfPages; i++) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        [imageView setImage:_unSelectImg];
-        [self addSubview:imageView];
+        CALayer *layer = [CALayer layer];
+        [layer setContents:(__bridge id _Nullable)_unSelectImg.CGImage];
+        [self.layer addSublayer:layer];
+        [self.layerArr addObject:layer];
     }
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
     CGFloat padding = 5;
     CGFloat width  = _selectImg.size.width;
     CGFloat height = _selectImg.size.height;
-    
-    [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        UIImageView *imageView = (UIImageView *)obj;
-        CGFloat x = idx * (width + padding) + padding;
+    for (NSInteger i = 0; i < _layerArr.count; i++) {
+        CGFloat x = i * (width + padding) + padding;
         CGFloat y = (30 - height) * 0.5;
-        [imageView setFrame:(CGRect){{x,y},{width,height}}];
-    }];
+        CALayer *layer = _layerArr[i];
+        [layer setFrame:(CGRect){{x,y},{width,height}}];
+    }
 }
 
 @end

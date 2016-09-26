@@ -13,7 +13,7 @@
 @interface KNCollectionViewCell : UICollectionViewCell
 
 /* show image on cell */
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) CALayer *imageLayer;
 
 /* IntroduceLabel's string */
 @property (nonatomic, copy) NSString *IntroduceString;

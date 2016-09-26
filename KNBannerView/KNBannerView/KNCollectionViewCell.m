@@ -12,22 +12,22 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if(self = [super initWithCoder:aDecoder]){
-        [self setupImageView];
+        [self setupImageLayer];
     }
     return self;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
-        [self setupImageView];
+        [self setupImageLayer];
     }
     return self;
 }
 
-- (void)setupImageView{
-    UIImageView *imageView = [[UIImageView alloc] init];
-    [self addSubview:imageView];
-    _imageView = imageView;
+- (void)setupImageLayer{
+    CALayer *imageLayer = [CALayer layer];
+    [self.layer addSublayer:imageLayer];
+    _imageLayer = imageLayer;
     
     KNCollectionViewTextView *IntroduceBgView = [[KNCollectionViewTextView alloc] init];
     _IntroduceBgView = IntroduceBgView;
@@ -72,7 +72,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    _imageView.frame = self.bounds;
+    [_imageLayer setFrame:self.bounds];
     CGFloat height = _IntroduceHeight?_IntroduceHeight:30;
     _IntroduceBgView.frame = CGRectMake(0, self.height - height, self.width, height);
 }
