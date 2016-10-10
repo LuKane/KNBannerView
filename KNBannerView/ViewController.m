@@ -31,6 +31,14 @@
     
     [self setupNetWorkBannerView];
     [self setupLocatioBannerView];
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"ClearMemory" style:0 target:self action:@selector(clear)];
+}
+
+// 清除本地图片 缓存
+- (void)clear{
+    [NSData removeDataWhenReceiveMemeryWarning];
 }
 
 /**
@@ -77,7 +85,7 @@
     bannerView.customPageControlImgArr = [arr copy];
     
     /****************************** == 占位图 == ********************************/
-    bannerView.placeHolder = [UIImage imageNamed:@"3"];
+    bannerView.placeHolder = [UIImage imageNamed:@"placeHolder"];
     bannerView.textShowStyle = KNTextShowStyleStay;
     bannerView.tag = 100;
     [self.view addSubview:bannerView];

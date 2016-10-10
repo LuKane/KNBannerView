@@ -14,6 +14,7 @@
 		3CEB6D331BEC39650020765C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D321BEC39650020765C /* Images.xcassets */; };
 		3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D341BEC39650020765C /* LaunchScreen.xib */; };
 		3CEB6D421BEC39650020765C /* KNBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D411BEC39650020765C /* KNBannerViewTests.m */; };
+		791890D91DAB6B12004EF2DA /* KNBannerViewSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 791890D81DAB6B12004EF2DA /* KNBannerViewSource.bundle */; };
 		79C3FE011BFA0E3900548D28 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDF61BFA0E3900548D28 /* KNBannerView.m */; };
 		79C3FE021BFA0E3900548D28 /* KNCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDF81BFA0E3900548D28 /* KNCollectionViewCell.m */; };
 		79C3FE031BFA0E3900548D28 /* KNJudgementTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C3FDFA1BFA0E3900548D28 /* KNJudgementTool.m */; };
@@ -49,6 +50,7 @@
 		3CEB6D3B1BEC39650020765C /* KNBannerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KNBannerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CEB6D401BEC39650020765C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CEB6D411BEC39650020765C /* KNBannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNBannerViewTests.m; sourceTree = "<group>"; };
+		791890D81DAB6B12004EF2DA /* KNBannerViewSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KNBannerViewSource.bundle; sourceTree = "<group>"; };
 		79C3FDF51BFA0E3900548D28 /* KNBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerView.h; sourceTree = "<group>"; };
 		79C3FDF61BFA0E3900548D28 /* KNBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerView.m; sourceTree = "<group>"; };
 		79C3FDF71BFA0E3900548D28 /* KNCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCollectionViewCell.h; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				79C3FDF81BFA0E3900548D28 /* KNCollectionViewCell.m */,
 				79F411941D332C5F00539FD6 /* KNCollectionViewTextView.h */,
 				79F411951D332C5F00539FD6 /* KNCollectionViewTextView.m */,
+				791890D81DAB6B12004EF2DA /* KNBannerViewSource.bundle */,
 				79D77F6C1D94EA7000E42EA5 /* KNPageControl */,
 				79C3FDF91BFA0E3900548D28 /* KNJudgementTool.h */,
 				79C3FDFA1BFA0E3900548D28 /* KNJudgementTool.m */,
@@ -260,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				791890D91DAB6B12004EF2DA /* KNBannerViewSource.bundle in Resources */,
 				3CEB6D311BEC39650020765C /* Main.storyboard in Resources */,
 				3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */,
 				3CEB6D331BEC39650020765C /* Images.xcassets in Resources */,

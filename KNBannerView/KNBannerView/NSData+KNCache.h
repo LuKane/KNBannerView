@@ -29,10 +29,9 @@
  */
 + (void)saveDataIntoLocationApplicationCacheWithURL:(NSString *)url image:(UIImage *)image;
 
-
 /**
  *  when receiveMemeryWarning or need to clear memery, remove the image'data
  */
-//+ (void)removeDataWhenReceiveMemeryWarning;
++ (void)removeDataWhenReceiveMemeryWarning;
 
 @end

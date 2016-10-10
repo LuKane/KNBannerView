@@ -110,6 +110,7 @@ static NSString *ID = @"KNCollectionView";
     _IntroduceTextColor            = [UIColor whiteColor];
     _IntroduceBackGroundAlpha      = 0.5;
     _IntroduceTextFont             = [UIFont fontWithName:@"Heiti SC" size:15];
+    _placeHolder                   = [UIImage imageNamed:@"KNBannerViewSource.bundle/placeHolder.png"];
     _IntroduceStyle                = KNIntroduceStyleLeft;
     _textShowStyle                 = KNTextShowStyleNormal;
     _IntroduceHeight               = 30;
