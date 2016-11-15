@@ -23,15 +23,6 @@
  */
 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
 
-/**
-    长按 bannerView 的回调
-
- @param bannerView 当前 bannerView
- @param collectionView 当前 collectionView
- @param index 当前下标
- */
-- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView longPressAtIndexPath:(NSInteger)index;
-
 @end
 
 @interface KNBannerView : UIView
