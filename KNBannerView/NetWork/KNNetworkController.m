@@ -11,25 +11,13 @@
 
 @interface KNNetworkController ()<KNBannerViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *textArr;
 @property (nonatomic, strong) NSMutableArray *urlArr;
 
 @end
 
 @implementation KNNetworkController
 
-- (NSMutableArray *)textArr{
-    if (!_textArr) {
-        _textArr = [NSMutableArray array];
-        
-        [_textArr addObject:@"轮播图改版了"];
-        [_textArr addObject:@"SDWebImage下载图片"];
-        [_textArr addObject:@"通过模型统一设置属性"];
-        [_textArr addObject:@"希望大家支持一下"];
-        [_textArr addObject:@"谢谢大家!!!"];
-    }
-    return _textArr;
-}
+
 
 - (NSMutableArray *)urlArr{
     if (!_urlArr) {
@@ -107,7 +95,6 @@
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setPageControlStyle:KNBannerPageControlStyleLeft]; // 设置pageControl 在左边
-    
     [viewM setIsNeedTimerRun:YES]; // 是否需要定时
     
     [bannerView setBannerViewModel:viewM]; // 通过模型设置属性 -->赋值

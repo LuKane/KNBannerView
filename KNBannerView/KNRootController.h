@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
+@property (nonatomic, strong) NSMutableArray *textArr;
+
 @end

@@ -6,9 +6,10 @@
 //  Copyright (c) 2015年 KNKane. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+//#import <UIKit/UIKit.h>
+#import "KNRootController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : KNRootController
 
 
 @end
