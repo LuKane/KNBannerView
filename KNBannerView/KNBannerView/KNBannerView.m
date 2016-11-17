@@ -81,8 +81,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }
     
     [self initializePageControl];
-    
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imageArr.count * 50 * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    [self jumpToLocation];
 }
 #pragma mark - setter ->网络图片
 - (void)setNetWorkImgArr:(NSMutableArray *)netWorkImgArr{
@@ -95,8 +94,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }
     
     [self initializePageControl];
-    
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imageArr.count * 50 * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    [self jumpToLocation];
 }
 #pragma mark - setter ->混合图片
 - (void)setBlendImgArr:(NSMutableArray *)blendImgArr{
@@ -111,6 +109,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }
     
     [self initializePageControl];
+    [self jumpToLocation];
+}
+
+- (void)jumpToLocation{
+    if(_imageArr.count == 1) return;
     
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imageArr.count * 50 * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
@@ -242,6 +245,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 #pragma mark - 初始化 PageControl
 - (void)initializePageControl{
     if(_pageControl) return;
+    
+    if(_imageArr.count == 1){
+        [_pageControl setHidden:YES];
+        return;
+    }
+    
     KNBannerPageControl *pageControl = [[KNBannerPageControl alloc] init];
     [pageControl setHidden:YES];
     _pageControl = pageControl;
@@ -278,6 +287,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     _collectionView = collectionView;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if(self.imageArr.count == 1) return 1;
     return self.imageArr.count * 50;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
