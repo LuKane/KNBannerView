@@ -1,9 +1,12 @@
 # KNBannerView
 无限循环轮播器:本地图片,网络图片,混合图片(本地&&网络)
+
 // 1.网络图片
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewNetWork.gif?raw=true)
+
 // 2.本地图片
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewLocation.gif?raw=true)
+
 // 3.混合图片 (本地 && 网络)
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewBlend.gif?raw=true)
 
