@@ -26,7 +26,7 @@
     KNBannerPageControl     *_pageControl;
 }
 
-/* 临时图片数组 : 将.h3个数组的内容放入此数组中 */
+/* 临时图片数组 : 将.h 3种类型的数组的内容放入此数组中 */
 @property (nonatomic, strong) NSMutableArray *imageArr;
 
 @end
@@ -87,7 +87,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setNetWorkImgArr:(NSMutableArray *)netWorkImgArr{
     _netWorkImgArr = netWorkImgArr;
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
-        BOOL isHttpString = [netWorkImgArr[i] isKindOfClass:[NSString class]];
+        BOOL isHttpString = false;
+        isHttpString = [netWorkImgArr[i] isKindOfClass:[NSString class]];
         isHttpString = [netWorkImgArr[i] hasPrefix:@"http"];
         NSAssert(isHttpString, @"\n **加载网络图片,NetWorkImgArr 内必须添加 图片的绝对路径** \n");
         [self.imageArr addObject:netWorkImgArr[i]];
@@ -342,11 +343,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     NSString *contentOffSetX = [NSString stringWithFormat:@"%f",(x + scrollViewW ) / scrollViewW];
     if([[contentOffSetX substringWithRange:NSMakeRange(contentOffSetX.length - 6, 6)] isEqualToString:@"000000"]){
         if([_bannerViewModel textShowStyle] != KNBannerViewTextShowStyleNormal){
-            NSInteger index = ([contentOffSetX integerValue] - 1) % 5;
+            NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
             [_viewText setText:_bannerViewModel.textArr[index]];
         }
         
-        NSInteger index = ([contentOffSetX integerValue] - 1) % 5;
+        NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
         [_pageControl setCurrentPage:index]; // 设置 pageControl
     }
 }
