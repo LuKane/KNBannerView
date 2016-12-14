@@ -74,9 +74,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setLocationImgArr:(NSMutableArray *)locationImgArr{
     _locationImgArr = locationImgArr;
     for (NSInteger i = 0; i < locationImgArr.count; i++) {
-        BOOL isString = [locationImgArr[i] isKindOfClass:[NSString class]];
-        if([locationImgArr[i] hasPrefix:@"http"]) isString = NO;
-        NSAssert(isString, @"\n **加载本地图片,LocationImgArr 内必须添加 图片名(字符串类型) ,不能以 'http' 为命名开头** \n");
+        BOOL isString = [locationImgArr[i] isKindOfClass:[UIImage class]];
+        NSAssert(isString, @"\n **加载本地图片,LocationImgArr 内必须添加 图片(UIImage) ** \n");
         [self.imageArr addObject:locationImgArr[i]];
     }
     
@@ -90,22 +89,27 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         BOOL isHttpString = false;
         isHttpString = [netWorkImgArr[i] isKindOfClass:[NSString class]];
         isHttpString = [netWorkImgArr[i] hasPrefix:@"http"];
-        NSAssert(isHttpString, @"\n **加载网络图片,NetWorkImgArr 内必须添加 图片的绝对路径** \n");
+        NSAssert(isHttpString, @"\n **加载网络图片,NetWorkImgArr 内必须添加 图片URL的绝对路径** \n");
         [self.imageArr addObject:netWorkImgArr[i]];
     }
     
     [self initializePageControl];
     [self jumpToLocation];
 }
+
 #pragma mark - setter ->混合图片
 - (void)setBlendImgArr:(NSMutableArray *)blendImgArr{
     _blendImgArr = blendImgArr;
     for (NSInteger i = 0; i < blendImgArr.count; i++) {
         BOOL isBlend = false;
-        if([blendImgArr[i] isKindOfClass:[NSString class]]) isBlend = YES;
-        if([blendImgArr[i] isKindOfClass:[NSString class]] &&
-           [blendImgArr[i] hasPrefix:@"http"]) isBlend = YES;
-        NSAssert(isBlend, @"\n **加载混合图片,blendImgArr 内必须添加 图片的绝对路径 或者 图片名(字符串类型)** \n");
+        if([blendImgArr[i] isKindOfClass:[UIImage class]]) isBlend = YES;
+        
+        if([blendImgArr[i] isKindOfClass:[NSString class]]){
+            if([blendImgArr[i] hasPrefix:@"http"]){
+                isBlend = YES;
+            }
+        }
+        NSAssert(isBlend, @"\n **加载混合图片,blendImgArr 内必须添加 图片URL的绝对路径 或者 图片(UIImage) ** \n");
         [self.imageArr addObject:blendImgArr[i]];
     }
     
@@ -207,7 +211,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     /* pageControl */
     if(![_bannerViewModel pageControlStyle])
-       [_bannerViewModel setPageControlStyle:[_defaultModel pageControlStyle]];
+        [_bannerViewModel setPageControlStyle:[_defaultModel pageControlStyle]];
     
     if(![_bannerViewModel CurrentPageIndicatorTintColor])
         [_bannerViewModel setCurrentPageIndicatorTintColor:[_defaultModel CurrentPageIndicatorTintColor]];
@@ -282,7 +286,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [collectionView setShowsHorizontalScrollIndicator:NO];
     
     [collectionView registerClass:[KNBannerCollectionViewCell class]
-                    forCellWithReuseIdentifier:KNCollectionViewID];
+       forCellWithReuseIdentifier:KNCollectionViewID];
     
     [self addSubview:collectionView];
     _collectionView = collectionView;
@@ -296,11 +300,13 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     NSInteger row = indexPath.row % self.imageArr.count;
     
-    if([self.imageArr[row] hasPrefix:@"http"]){ // 网络图片
-        [cell setPlaceHolder:[_bannerViewModel placeHolder]];
-        [cell setUrl:self.imageArr[row]];
-    }else{ // 本地图片
-        [cell setImageName:self.imageArr[row]];
+    if([self.imageArr[row] isKindOfClass:[NSString class]]){
+        if([self.imageArr[row] hasPrefix:@"http"]){ // 网络图片
+            [cell setPlaceHolder:[_bannerViewModel placeHolder]];
+            [cell setUrl:self.imageArr[row]];
+        }
+    }else{
+        [cell setImage:self.imageArr[row]];
     }
     
     if(![cell isSet]){
@@ -323,8 +329,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     if([_delegate respondsToSelector:@selector(bannerView:collectionView:didSelectItemAtIndexPath:)]){
         [_delegate bannerView:(KNBannerView *)self
-                   collectionView:collectionView
-                   didSelectItemAtIndexPath:row];
+               collectionView:collectionView
+     didSelectItemAtIndexPath:row];
     }
 }
 
@@ -339,7 +345,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     // 设置 pageControl
     CGFloat scrollViewW = scrollView.frame.size.width;
     CGFloat x = scrollView.contentOffset.x;
-
+    
     NSString *contentOffSetX = [NSString stringWithFormat:@"%f",(x + scrollViewW ) / scrollViewW];
     if([[contentOffSetX substringWithRange:NSMakeRange(contentOffSetX.length - 6, 6)] isEqualToString:@"000000"]){
         if([_bannerViewModel textShowStyle] != KNBannerViewTextShowStyleNormal){

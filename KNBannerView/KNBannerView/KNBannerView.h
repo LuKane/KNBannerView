@@ -44,7 +44,7 @@
 /**
     1.创建 bannerView 加载本地图片
 
- @param locationImgArr 本地图片数组(图片名字符串)
+ @param locationImgArr 本地图片数组(图片实体 UIImage)
  @param frame 大小
  @return bannerView
  */
@@ -60,7 +60,7 @@
 + (instancetype)bannerViewWithNetWorkImagesArr:(NSArray *)netWorkImgArr frame:(CGRect)frame;
 
 /**
-    3.创建 bannerView 记载 网络图片 && 本地图片 (混合 图片名字符串 + url字符串)
+    3.创建 bannerView 记载 网络图片 && 本地图片 (混合 图片实体 UIImage + url字符串)
 
  @param blendImgArr 混合图片数组 (url && image)
  @param frame 大小
