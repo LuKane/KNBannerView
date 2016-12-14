@@ -23,9 +23,9 @@
         _dataArr = [NSMutableArray array];
         
         NSString *url1 = @"http://ww1.sinaimg.cn/mw690/9bbc284bgw1f9rk86nq06j20fa0a4whs.jpg";
-        NSString *img2 = @"2";
+        UIImage *img2 = [UIImage imageNamed:@"2"];
         NSString *url3 = @"http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg0nw7zbj20rs0jntk7.jpg";
-        NSString *img4 = @"4";
+        UIImage *img4 = [UIImage imageNamed:@"4"];
         NSString *url5 = @"http://ww2.sinaimg.cn/mw690/9bbc284bgw1f9qg10w0w1j20s40jsah1.jpg";
         
         [_dataArr addObject:url1];

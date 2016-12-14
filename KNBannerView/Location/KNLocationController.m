@@ -22,11 +22,11 @@
         
         _dataArr = [NSMutableArray array];
         
-        NSString *img1 = @"1";
-        NSString *img2 = @"2";
-        NSString *img3 = @"3";
-        NSString *img4 = @"4";
-        NSString *img5 = @"5";
+        NSString *img1 = [UIImage imageNamed:@"1"];
+        NSString *img2 = [UIImage imageNamed:@"2"];
+        NSString *img3 = [UIImage imageNamed:@"3"];
+        NSString *img4 = [UIImage imageNamed:@"4"];
+        NSString *img5 = [UIImage imageNamed:@"5"];
         
         [_dataArr addObject:img1];
         [_dataArr addObject:img2];
