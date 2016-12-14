@@ -72,8 +72,8 @@
     [_viewText setText:text];
 }
 
-- (void)setImageName:(NSString *)imageName{
-    [_imageView setImage:[UIImage imageNamed:imageName]];
+- (void)setImage:(UIImage *)image{
+    [_imageView setImage:image];
     [self layoutSubviews];
 }
 

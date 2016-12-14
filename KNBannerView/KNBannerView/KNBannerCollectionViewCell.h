@@ -16,7 +16,7 @@
 /* 网络图片 url */
 @property (nonatomic, copy  ) NSString *url;
 /* 本地图片名 */
-@property (nonatomic, copy  ) NSString *imageName;
+@property (nonatomic, strong) UIImage *image;
 /* 当前文字 */
 @property (nonatomic, copy  ) NSString *text;
 
