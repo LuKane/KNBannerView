@@ -30,14 +30,16 @@
 /* 代理 */
 @property (nonatomic, weak  ) id<KNBannerViewDelegate> delegate;
 /* 本地图片数组 */
-@property (nonatomic, strong,readonly) NSMutableArray *locationImgArr;
+@property (nonatomic, strong) NSMutableArray *locationImgArr;
 /* 网络图片数组 */
-@property (nonatomic, strong,readonly) NSMutableArray *netWorkImgArr;
+@property (nonatomic, strong) NSMutableArray *netWorkImgArr;
 /* 混合图片数组 */
-@property (nonatomic, strong,readonly) NSMutableArray *blendImgArr;
+@property (nonatomic, strong) NSMutableArray *blendImgArr;
 
 /* 自定义信息的模型 --> 一次性全部赋值 */
 @property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
+
+- (void)reloadData;
 
 /* 实现方法 */
 
