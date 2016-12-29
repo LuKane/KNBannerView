@@ -13,6 +13,12 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
+@property (nonatomic,weak  ) KNBannerView *bannerView1;
+@property (nonatomic,weak  ) KNBannerView *bannerView2;
+@property (nonatomic,weak  ) KNBannerView *bannerView3;
+
+@property (nonatomic,strong) NSMutableArray *changeArr;
+
 @end
 
 @implementation KNLocationController
@@ -22,11 +28,11 @@
         
         _dataArr = [NSMutableArray array];
         
-        NSString *img1 = [UIImage imageNamed:@"1"];
-        NSString *img2 = [UIImage imageNamed:@"2"];
-        NSString *img3 = [UIImage imageNamed:@"3"];
-        NSString *img4 = [UIImage imageNamed:@"4"];
-        NSString *img5 = [UIImage imageNamed:@"5"];
+        UIImage *img1 = [UIImage imageNamed:@"1"];
+        UIImage *img2 = [UIImage imageNamed:@"2"];
+        UIImage *img3 = [UIImage imageNamed:@"3"];
+        UIImage *img4 = [UIImage imageNamed:@"4"];
+        UIImage *img5 = [UIImage imageNamed:@"5"];
         
         [_dataArr addObject:img1];
         [_dataArr addObject:img2];
@@ -37,16 +43,55 @@
     return _dataArr;
 }
 
+- (NSMutableArray *)changeArr{
+    if(!_changeArr){
+        _changeArr = [NSMutableArray array];
+        
+        UIImage *img1 = [UIImage imageNamed:@"1Change"];
+        UIImage *img2 = [UIImage imageNamed:@"2Change"];
+        UIImage *img3 = [UIImage imageNamed:@"3Change"];
+        UIImage *img4 = [UIImage imageNamed:@"4Change"];
+        UIImage *img5 = [UIImage imageNamed:@"5Change"];
+        
+        [_changeArr addObject:img1];
+        [_changeArr addObject:img2];
+        [_changeArr addObject:img3];
+        [_changeArr addObject:img4];
+        [_changeArr addObject:img5];
+    }
+    return _changeArr;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"本地";
-    
+    [self setupNav];
     
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
     
     [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
+}
+
+- (void)setupNav{
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBtn setTitle:@"Change" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [rightBtn setFrame:(CGRect){CGPointZero,{60,30}}];
+    [rightBtn addTarget:self action:@selector(rightBtnIBAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+}
+
+- (void)rightBtnIBAction{
+    _bannerView1.locationImgArr = [self.changeArr mutableCopy];
+    _bannerView2.locationImgArr = [self.changeArr mutableCopy];
+    _bannerView3.locationImgArr = [self.changeArr mutableCopy];
+    
+    [_bannerView1 reloadData];
+    [_bannerView2 reloadData];
+    [_bannerView3 reloadData];
 }
 
 - (void)setupNetWorkBannerView1{
@@ -69,8 +114,9 @@
     
     [bannerView setTag:0]; // 标识是哪个bannerView
     
-    
     [self.scrollView addSubview:bannerView];
+    
+    _bannerView1 = bannerView;
 }
 
 - (void)setupNetWorkBannerView2{
@@ -96,6 +142,8 @@
     [bannerView setTag:1];
     
     [self.scrollView addSubview:bannerView];
+    
+    _bannerView2 = bannerView;
 }
 
 - (void)setupNetWorkBannerView3{
@@ -121,6 +169,8 @@
     [bannerView setTag:2];
     
     [self.scrollView addSubview:bannerView];
+    
+    _bannerView3 = bannerView;
 }
 
 
