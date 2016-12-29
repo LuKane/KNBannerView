@@ -1,5 +1,6 @@
 # KNBannerView
 无限循环轮播器:本地图片,网络图片,混合图片(本地&&网络)
+⭐️⭐️⭐️⭐️⭐️⭐️⭐️ 有任何需要增加的功能,请直接邮箱联系我.欢迎点赞,谢谢 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 
 // 1.网络图片
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewNetWork.gif?raw=true)
@@ -20,7 +21,7 @@
 * 7.设置描述文字的位置:(左,中,右) 以及字体颜色,大小,背景颜色
 * 8.多张图片滚动时 文字的多种显示样式.单张图片时的样式
 * 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
-
+* 10.新增 当BannerView生成之后, 修改内部展示的图片.
 ##二.方法定义及调用
 ###1.类方法创建BannerView:本地图片和网络图片
 ```
