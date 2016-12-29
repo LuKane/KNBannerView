@@ -13,10 +13,35 @@
 
 @property (nonatomic, strong) NSMutableArray *urlArr;
 
+@property (nonatomic,weak  ) KNBannerView *bannerView1;
+@property (nonatomic,weak  ) KNBannerView *bannerView2;
+@property (nonatomic,weak  ) KNBannerView *bannerView3;
+
+@property (nonatomic,strong) NSMutableArray *changeArr;
+
 @end
 
 @implementation KNNetworkController
 
+- (NSMutableArray *)changeArr{
+    if (!_changeArr) {
+        
+        _changeArr = [NSMutableArray array];
+        
+        NSString *url1 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29llpshkj20m80dwjt6.jpg";
+        NSString *url2 = @"http://ww2.sinaimg.cn/mw690/9bbc284bgw1fb29lmpn6xj20ia0c5juf.jpg";
+        NSString *url3 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lnhmypj20m80gojtg.jpg";
+        NSString *url4 = @"http://ww1.sinaimg.cn/mw690/9bbc284bgw1fb29loe46cj20m80go77l.jpg";
+        NSString *url5 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lsbrfzj20m80godjg.jpg";
+        
+        [_changeArr addObject:url1];
+        [_changeArr addObject:url2];
+        [_changeArr addObject:url3];
+        [_changeArr addObject:url4];
+        [_changeArr addObject:url5];
+    }
+    return _changeArr;
+}
 
 
 - (NSMutableArray *)urlArr{
@@ -40,6 +65,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"网络";
+    [self setupNav];
     
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
@@ -47,6 +73,26 @@
     
     
     [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
+}
+
+- (void)setupNav{
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBtn setTitle:@"Change" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [rightBtn setFrame:(CGRect){CGPointZero,{60,30}}];
+    [rightBtn addTarget:self action:@selector(rightBtnIBAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+}
+
+- (void)rightBtnIBAction{
+    _bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
+    _bannerView2.netWorkImgArr = [self.changeArr mutableCopy];
+    _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
+    
+    [_bannerView1 reloadData];
+    [_bannerView2 reloadData];
+    [_bannerView3 reloadData];
 }
 
 // 样式1
@@ -75,6 +121,7 @@
     [bannerView setTag:0]; // 标识是哪个bannerView
     
     [self.scrollView addSubview:bannerView];
+    _bannerView1 = bannerView;
 }
 
 - (void)setupNetWorkBannerView2{
@@ -101,6 +148,7 @@
     [bannerView setTag:1];
     
     [self.scrollView addSubview:bannerView];
+    _bannerView2 = bannerView;
 }
 
 - (void)setupNetWorkBannerView3{
@@ -126,6 +174,7 @@
     [bannerView setTag:2];
     
     [self.scrollView addSubview:bannerView];
+    _bannerView3 = bannerView;
 }
 
 /****************************** == Delegate == ********************************/
