@@ -13,9 +13,34 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
+@property (nonatomic,weak  ) KNBannerView *bannerView1;
+@property (nonatomic,weak  ) KNBannerView *bannerView2;
+@property (nonatomic,weak  ) KNBannerView *bannerView3;
+
+@property (nonatomic,strong) NSMutableArray *changeArr;
+
 @end
 
 @implementation KNBlendController
+
+- (NSMutableArray *)changeArr{
+    if(!_changeArr){
+        _changeArr = [NSMutableArray array];
+        
+        NSString *url1 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29llpshkj20m80dwjt6.jpg";
+        UIImage *img2 = [UIImage imageNamed:@"2Change"];
+        NSString *url3 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lnhmypj20m80gojtg.jpg";
+        UIImage *img4 = [UIImage imageNamed:@"4Change"];
+        NSString *url5 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lsbrfzj20m80godjg.jpg";
+        
+        [_changeArr addObject:url1];
+        [_changeArr addObject:img2];
+        [_changeArr addObject:url3];
+        [_changeArr addObject:img4];
+        [_changeArr addObject:url5];
+    }
+    return _changeArr;
+}
 
 - (NSMutableArray *)dataArr{
     if (!_dataArr) {
@@ -40,10 +65,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"网络+本地(混合)";
+    [self setupNav];
     
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
+}
+
+- (void)setupNav{
+    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBtn setTitle:@"Change" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    [rightBtn setFrame:(CGRect){CGPointZero,{60,30}}];
+    [rightBtn addTarget:self action:@selector(rightBtnIBAction) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
+}
+
+- (void)rightBtnIBAction{
+    _bannerView1.blendImgArr = [self.changeArr mutableCopy];
+    _bannerView2.blendImgArr = [self.changeArr mutableCopy];
+    _bannerView3.blendImgArr = [self.changeArr mutableCopy];
+    
+    [_bannerView1 reloadData];
+    [_bannerView2 reloadData];
+    [_bannerView3 reloadData];
 }
 
 - (void)setupNetWorkBannerView1{
@@ -68,6 +114,8 @@
     
     
     [self.scrollView addSubview:bannerView];
+    
+    _bannerView1 = bannerView;
 }
 
 - (void)setupNetWorkBannerView2{
@@ -93,6 +141,7 @@
     [bannerView setTag:1];
     
     [self.scrollView addSubview:bannerView];
+    _bannerView2 = bannerView;
 }
 
 - (void)setupNetWorkBannerView3{
@@ -118,6 +167,7 @@
     [bannerView setTag:2];
     
     [self.scrollView addSubview:bannerView];
+    _bannerView3 = bannerView;
 }
 
 @end
