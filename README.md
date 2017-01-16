@@ -57,6 +57,14 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 [viewM setIsNeedPageControl:YES]; // 默认系统PageControl
 [viewM setPageControlStyle:KNBannerPageControlStyleMiddel]; // 设置pageControl 在居中
 
+// 3.动态修改 bannerView 中的图片
+_bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
+_bannerView2.netWorkImgArr = [self.changeArr mutableCopy];
+_bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
+    
+[_bannerView1 reloadData];
+[_bannerView2 reloadData];
+[_bannerView3 reloadData];
 ```
 
 ###4.设置bannerView 介绍文字的属性
