@@ -56,8 +56,9 @@ NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"page
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
 [viewM setIsNeedPageControl:YES]; // 默认系统PageControl
 [viewM setPageControlStyle:KNBannerPageControlStyleMiddel]; // 设置pageControl 在居中
-
-// 3.动态修改 bannerView 中的图片
+```
+###4.动态修改 bannerView 中的图片
+```
 _bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
 _bannerView2.netWorkImgArr = [self.changeArr mutableCopy];
 _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
@@ -65,15 +66,16 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 [_bannerView1 reloadData];
 [_bannerView2 reloadData];
 [_bannerView3 reloadData];
+
 ```
 
-###4.设置bannerView 介绍文字的属性
+###5.设置bannerView 介绍文字的属性
 ```
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
 [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
 [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
 ```
-###5.图片的点击
+###6.图片的点击
 #####1>遵守 KNBannerViewDelegate
 #####2>设代理 bannerView.delegate = self;
 #####3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
