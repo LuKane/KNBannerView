@@ -55,9 +55,9 @@
         
         [_urlArr addObject:url1];
         [_urlArr addObject:url2];
-        [_urlArr addObject:url3];
-        [_urlArr addObject:url4];
-        [_urlArr addObject:url5];
+//        [_urlArr addObject:url3];
+//        [_urlArr addObject:url4];
+//        [_urlArr addObject:url5];
     }
     return _urlArr;
 }
@@ -86,6 +86,7 @@
 }
 
 - (void)rightBtnIBAction{
+    
     _bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
     _bannerView2.netWorkImgArr = [self.changeArr mutableCopy];
     _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
