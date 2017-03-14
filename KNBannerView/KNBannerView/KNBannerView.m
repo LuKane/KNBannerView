@@ -77,6 +77,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 #pragma mark - setter ->本地图片
 - (void)setLocationImgArr:(NSMutableArray *)locationImgArr{
     [self.imageArr removeAllObjects];
+    [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
+    
     _locationImgArr = locationImgArr;
     for (NSInteger i = 0; i < locationImgArr.count; i++) {
         BOOL isString = [locationImgArr[i] isKindOfClass:[UIImage class]];
@@ -87,9 +89,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [self initializePageControl];
     [self jumpToLocation];
 }
+
 #pragma mark - setter ->网络图片
 - (void)setNetWorkImgArr:(NSMutableArray *)netWorkImgArr{
     [self.imageArr removeAllObjects];
+    [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
+    
     _netWorkImgArr = netWorkImgArr;
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
         BOOL isHttpString = false;
@@ -110,6 +115,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 #pragma mark - setter ->混合图片
 - (void)setBlendImgArr:(NSMutableArray *)blendImgArr{
     [self.imageArr removeAllObjects];
+    [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
+    
     _blendImgArr = blendImgArr;
     for (NSInteger i = 0; i < blendImgArr.count; i++) {
         BOOL isBlend = false;
