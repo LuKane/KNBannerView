@@ -29,6 +29,8 @@
 
 /* 代理 */
 @property (nonatomic, weak  ) id<KNBannerViewDelegate> delegate;
+
+/* 以下三个数组, 如果单独设置, 则是为了 切换 轮播图中的图片  */
 /* 本地图片数组 */
 @property (nonatomic, strong) NSMutableArray *locationImgArr;
 /* 网络图片数组 */
