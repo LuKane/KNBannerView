@@ -94,7 +94,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
         BOOL isHttpString = false;
         isHttpString = [netWorkImgArr[i] isKindOfClass:[NSString class]];
-        isHttpString = [netWorkImgArr[i] hasPrefix:@"http"];
+        if([netWorkImgArr[i] hasPrefix:@"http"] || [netWorkImgArr[i] hasPrefix:@"https"]){
+            isHttpString = true;
+        }else{
+            isHttpString = false;
+        }
         NSAssert(isHttpString, @"\n **加载网络图片,NetWorkImgArr 内必须添加 图片URL的绝对路径** \n");
         [self.imageArr addObject:netWorkImgArr[i]];
     }
@@ -112,7 +116,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         if([blendImgArr[i] isKindOfClass:[UIImage class]]) isBlend = YES;
         
         if([blendImgArr[i] isKindOfClass:[NSString class]]){
-            if([blendImgArr[i] hasPrefix:@"http"]){
+            if([blendImgArr[i] hasPrefix:@"http"] || [blendImgArr[i] hasPrefix:@"https"]){
                 isBlend = YES;
             }
         }
