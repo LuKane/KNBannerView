@@ -103,7 +103,7 @@
     KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
     [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
     [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
-    
+
     NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"],[UIImage imageNamed:@"pageControlUnSelected1"], nil];
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
@@ -168,6 +168,10 @@
     
     [self.scrollView addSubview:bannerView];
     _bannerView3 = bannerView;
+}
+
+- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index{
+    NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
 }
 
 @end
