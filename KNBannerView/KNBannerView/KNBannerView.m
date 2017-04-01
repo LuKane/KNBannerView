@@ -344,10 +344,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger row = indexPath.row % [_imageArr count];
+    KNBannerCollectionViewCell *cell = (KNBannerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
-    if([_delegate respondsToSelector:@selector(bannerView:collectionView:didSelectItemAtIndexPath:)]){
+    if([_delegate respondsToSelector:@selector(bannerView:collectionView:collectionViewCell:didSelectItemAtIndexPath:)]){
         [_delegate bannerView:(KNBannerView *)self
                collectionView:collectionView
+           collectionViewCell:cell
      didSelectItemAtIndexPath:row];
     }
 }

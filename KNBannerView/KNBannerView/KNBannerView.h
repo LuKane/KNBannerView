@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "KNBannerViewModel.h"
+#import "KNBannerCollectionViewCell.h"
 @class KNBannerView;
 
 @protocol KNBannerViewDelegate <NSObject>
@@ -19,9 +20,10 @@
  
  @param bannerView 当前 bannerView
  @param collectionView 当前collectionView
+ @param collectionViewCell 当前collectionViewCell
  @param index 当前下标
  */
-- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index;
+- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
 
 @end
 
@@ -41,6 +43,7 @@
 /* 自定义信息的模型 --> 一次性全部赋值 */
 @property (nonatomic, strong) KNBannerViewModel *bannerViewModel;
 
+/* 重载数据 */
 - (void)reloadData;
 
 /* 实现方法 */
