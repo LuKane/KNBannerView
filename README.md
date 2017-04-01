@@ -78,5 +78,7 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 ###6.图片的点击
 
 #####1>遵守 KNBannerViewDelegate
+
 #####2>设代理 bannerView.delegate = self;
+
 #####3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
