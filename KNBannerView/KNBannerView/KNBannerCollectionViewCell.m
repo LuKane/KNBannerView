@@ -13,7 +13,6 @@
 #import "KNBannerViewText.h"
 
 @interface KNBannerCollectionViewCell(){
-    UIImageView *_imageView;
     KNBannerViewText *_viewText; // 显示 文字的 view
 }
 
