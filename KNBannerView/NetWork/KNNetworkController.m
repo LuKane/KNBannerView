@@ -55,9 +55,9 @@
         
         [_urlArr addObject:url1];
         [_urlArr addObject:url2];
-//        [_urlArr addObject:url3];
-//        [_urlArr addObject:url4];
-//        [_urlArr addObject:url5];
+        [_urlArr addObject:url3];
+        [_urlArr addObject:url4];
+        [_urlArr addObject:url5];
     }
     return _urlArr;
 }
@@ -180,7 +180,11 @@
 
 /****************************** == Delegate == ********************************/
 
-- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSInteger)index{
+- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index{
+    
+    NSLog(@"%@",collectionViewCell.imageView);
+    
+    
     NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
 }
 

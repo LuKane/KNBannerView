@@ -173,5 +173,8 @@
     _bannerView3 = bannerView;
 }
 
+- (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index{
+    NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
+}
 
 @end
