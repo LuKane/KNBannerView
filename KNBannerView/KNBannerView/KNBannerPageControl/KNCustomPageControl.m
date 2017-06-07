@@ -46,6 +46,12 @@
 }
 
 - (void)setNumberOfPages:(NSInteger)numberOfPages{
+    for (NSInteger i = 0; i < self.layerArr.count; i++) {
+        CALayer *layer = self.layerArr[i];
+        [layer removeFromSuperlayer];
+    }
+    [self.layerArr removeAllObjects];
+    
     for (NSInteger i = 0; i < numberOfPages; i++) {
         CALayer *layer = [CALayer layer];
         [layer setContents:(__bridge id _Nullable)_unSelectImg.CGImage];
