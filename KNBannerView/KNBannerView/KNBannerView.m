@@ -12,8 +12,14 @@
 #import "UIView+KNExtension.h"
 #import "KNBannerPageControl.h"
 
+typedef NS_ENUM(NSInteger,KNBannerType){
+    KNBannerTypeNetwork,  // 网络
+    KNBannerTypeLocation, // 本地
+    KNBannerTypeBlend     // 本地和网络结合
+};
+
 @interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
-    
+    KNBannerType             _bannerImageType;
     UICollectionView        *_collectionView;
     UICollectionViewFlowLayout  *_layout;
     KNBannerCollectionViewCell    *_collectionViewCell;
@@ -70,6 +76,16 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 - (void)reloadData{
+    
+    [self initializeDefaultData];
+    
+    [self jumpToLocation];
+    
+//    self.bannerViewModel = _defaultModel;
+    self.bannerViewModel.numberOfPages = self.imageArr.count;
+    
+    [_pageControl setBannerViewModel:self.bannerViewModel];
+    
     [_collectionView reloadData];
 }
 
@@ -78,7 +94,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setLocationImgArr:(NSMutableArray *)locationImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    
+    _bannerImageType = KNBannerTypeLocation;
     _locationImgArr = locationImgArr;
     for (NSInteger i = 0; i < locationImgArr.count; i++) {
         BOOL isString = [locationImgArr[i] isKindOfClass:[UIImage class]];
@@ -94,7 +110,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setNetWorkImgArr:(NSMutableArray *)netWorkImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    
+    _bannerImageType = KNBannerTypeNetwork;
     _netWorkImgArr = netWorkImgArr;
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
         BOOL isHttpString = false;
@@ -116,7 +132,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setBlendImgArr:(NSMutableArray *)blendImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    
+    _bannerImageType = KNBannerTypeBlend;
     _blendImgArr = blendImgArr;
     for (NSInteger i = 0; i < blendImgArr.count; i++) {
         BOOL isBlend = false;
@@ -254,6 +270,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [bannerViewModel setNumberOfPages:self.imageArr.count];
         [_pageControl setBannerViewModel:bannerViewModel];
     }
+    _defaultModel = bannerViewModel;
 }
 
 #pragma mark - 创建 Text 的 view控件
