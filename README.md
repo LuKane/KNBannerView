@@ -43,7 +43,7 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 [viewM setPlaceHolder:[UIImage imageNamed:@"3"]]; // 设置占位图
 ```
 
-###3.设置bannerView的PageControl的属性
+### 3.设置bannerView的PageControl的属性
 ```
 // 1.自定义 PageControl
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
@@ -77,8 +77,8 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 ```
 ### 6.图片的点击
 
-#####1>遵守 KNBannerViewDelegate
+##### 1>遵守 KNBannerViewDelegate
 
-#####2>设代理 bannerView.delegate = self;
+##### 2>设代理 bannerView.delegate = self;
 
-#####3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
+##### 3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
