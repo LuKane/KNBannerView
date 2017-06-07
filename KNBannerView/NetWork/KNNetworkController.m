@@ -36,13 +36,12 @@
         
         [_changeArr addObject:url1];
         [_changeArr addObject:url2];
-        [_changeArr addObject:url3];
-        [_changeArr addObject:url4];
-        [_changeArr addObject:url5];
+//        [_changeArr addObject:url3];
+//        [_changeArr addObject:url4];
+//        [_changeArr addObject:url5];
     }
     return _changeArr;
 }
-
 
 - (NSMutableArray *)urlArr{
     if (!_urlArr) {
