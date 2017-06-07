@@ -12,7 +12,7 @@
 // 3.混合图片 (本地 && 网络)
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewBlend.gif?raw=true)
 
-##一.功能描述及要点
+## 一.功能描述及要点
 * 1.无限图片轮播器,加载 '本地图片' && '网络图片' && '本地和网络的混合图片'
 * 2.修改成SDWebImage下载图片
 * 3.通过代理方法执行图片的点击事件
@@ -24,8 +24,8 @@
 * 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 * 10.新增 当BannerView生成之后, 修改内部展示的图片.
 
-##二.方法定义及调用
-###1.类方法创建BannerView:本地图片和网络图片
+## 二.方法定义及调用
+### 1.类方法创建BannerView:本地图片和网络图片
 ```
 // 本地图片
 + (instancetype)bannerViewWithLocationImagesArr:(NSArray *)locationImgArr frame:(CGRect)frame
@@ -35,7 +35,7 @@
 + (instancetype)bannerViewWithBlendImagesArr:(NSArray *)blendImgArr frame:(CGRect)frame
 ```
 
-###2.设置bannerView的占位图,定时器的时间
+### 2.设置bannerView的占位图,定时器的时间
 ```
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
 [viewM setIsNeedTimerRun:YES]; // 是否需要定时
@@ -57,7 +57,7 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 [viewM setIsNeedPageControl:YES]; // 默认系统PageControl
 [viewM setPageControlStyle:KNBannerPageControlStyleMiddel]; // 设置pageControl 在居中
 ```
-###4.动态修改 bannerView 中的图片
+### 4.动态修改 bannerView 中的图片
 ```
 _bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
 _bannerView2.netWorkImgArr = [self.changeArr mutableCopy];
@@ -69,13 +69,13 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 
 ```
 
-###5.设置bannerView 介绍文字的属性
+### 5.设置bannerView 介绍文字的属性
 ```
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
 [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
 [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
 ```
-###6.图片的点击
+### 6.图片的点击
 
 #####1>遵守 KNBannerViewDelegate
 
