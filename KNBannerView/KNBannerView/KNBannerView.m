@@ -81,7 +81,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     [self jumpToLocation];
     
-//    self.bannerViewModel = _defaultModel;
     self.bannerViewModel.numberOfPages = self.imageArr.count;
     
     [_pageControl setBannerViewModel:self.bannerViewModel];
@@ -397,9 +396,15 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 /****************************** == Timer == ********************************/
 - (void)setupTimer{
+    // 如果只有 一张 图片, 则 不会 有 轮播效果
     if([_imageArr count] == 1) return;
     
     if(![_bannerViewModel isNeedTimerRun]) return;
+    
+    // 如果 定时器 存在, 则 移除掉 定时器
+    if(_bannerTimer){
+        [self removeTimer];
+    }
     
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
     _bannerTimer = timer;

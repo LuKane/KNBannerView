@@ -105,9 +105,6 @@
      */
     [bannerView setDelegate:self]; // 设置代理, 为了实现代理方法
     
-    
-    
-    
     KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
     [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
     [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
