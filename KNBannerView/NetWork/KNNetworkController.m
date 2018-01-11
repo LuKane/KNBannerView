@@ -139,7 +139,7 @@
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setPageControlStyle:KNBannerPageControlStyleLeft]; // 设置pageControl 在左边
     [viewM setIsNeedTimerRun:YES]; // 是否需要定时
-    [viewM setIsNeedCycle:YES];
+    [viewM setIsNeedCycle:YES]; // 让bannerView 无限循环, 默认 不 循环
     
     [bannerView setBannerViewModel:viewM]; // 通过模型设置属性 -->赋值
     [bannerView setTag:1];
