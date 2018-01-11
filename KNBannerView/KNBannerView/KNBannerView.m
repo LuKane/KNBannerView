@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger,KNBannerType){
     KNBannerViewText        *_viewText; // 文字 view
     BOOL                     _isNeedText;
     KNBannerPageControl     *_pageControl;
+    NSInteger                _kAcount; // 图片的倍数 =   * 100
 }
 
 /* 临时图片数组 : 将.h 3种类型的数组的内容放入此数组中 */
@@ -69,6 +70,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+        _kAcount = 100;
         [self initializeCollectionView];// 初始化 collectionView
         [self initializeDefaultData];   // 初始化 默认数据
     }
@@ -153,7 +155,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)jumpToLocation{
     if(_imageArr.count == 1) return;
     
-    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:_imageArr.count * 50 * 0.5 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+    NSInteger index = _imageArr.count * _kAcount * 0.5;
+    if(!_bannerViewModel.isNeedCycle){
+        index = 0;
+    }
+    [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
 }
 
 #pragma mark - 初始化 默认数据
@@ -169,6 +175,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [_defaultModel setBannerTimeInterval:1.5f];
     [_defaultModel setIsNeedTimerRun:NO];
     [_defaultModel setPlaceHolder:[UIImage imageNamed:@"KNBannerViewSource.bundle/placeHolder.png"]];
+    [_defaultModel setIsNeedCycle:NO];
     
     [_defaultModel setPageControlImgArr:nil];
     [_defaultModel setCurrentPageIndicatorTintColor:[UIColor greenColor]];
@@ -269,7 +276,17 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [bannerViewModel setNumberOfPages:self.imageArr.count];
         [_pageControl setBannerViewModel:bannerViewModel];
     }
+    
     _defaultModel = bannerViewModel;
+    
+    if(_bannerViewModel.isNeedCycle == YES){
+        [self jumpToLocation];
+    }else{
+        bannerViewModel.isNeedCycle = _bannerViewModel.isNeedCycle;
+        _kAcount = 1;
+        [self jumpToLocation];
+        [_collectionView reloadData];
+    }
 }
 
 #pragma mark - 创建 Text 的 view控件
@@ -327,7 +344,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if(self.imageArr.count == 1) return 1;
-    return self.imageArr.count * 50;
+    return self.imageArr.count * _kAcount;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     KNBannerCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:KNCollectionViewID forIndexPath:indexPath];
@@ -421,8 +438,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     if([self isEmptyArray:_imageArr]) return;
     NSInteger index = (_collectionView.contentOffset.x / _layout.itemSize.width) + 1;
-    if (index == _imageArr.count * 50 || index == 0) {
-        index = _imageArr.count * 50 * 0.5;
+    
+    if (index == _imageArr.count * _kAcount || index == 0) {
+        if(_kAcount == 1) return;
+        
+        index = _imageArr.count * _kAcount * 0.5;
+        
         [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
     }
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];

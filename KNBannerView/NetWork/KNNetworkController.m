@@ -70,7 +70,6 @@
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
     
-    
     [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
 }
 
@@ -112,7 +111,7 @@
     NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"],[UIImage imageNamed:@"pageControlUnSelected1"], nil];
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
-    
+    [viewM setIsNeedCycle:YES];
     [bannerView setBannerViewModel:viewM]; // 通过模型设置属性 -->赋值
     
     [bannerView setTag:0]; // 标识是哪个bannerView
@@ -140,6 +139,7 @@
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setPageControlStyle:KNBannerPageControlStyleLeft]; // 设置pageControl 在左边
     [viewM setIsNeedTimerRun:YES]; // 是否需要定时
+    [viewM setIsNeedCycle:YES];
     
     [bannerView setBannerViewModel:viewM]; // 通过模型设置属性 -->赋值
     [bannerView setTag:1];

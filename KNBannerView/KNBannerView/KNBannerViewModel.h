@@ -72,4 +72,7 @@ typedef NS_ENUM(NSInteger,KNBannerPageControlStyle){
 /* 是否需要 pageControl ,默认 不需要 : NO, UIPageControl */
 @property (nonatomic, assign) BOOL isNeedPageControl;
 
+/* 是否需要 循环, 默认  不需要 : NO */
+@property (nonatomic, assign) BOOL  isNeedCycle;
+
 @end
