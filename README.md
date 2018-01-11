@@ -69,7 +69,12 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 
 ```
 
-### 5.设置bannerView 介绍文字的属性
+### 5.让 BannerView 无限循环 (2018-1-11 日更新)
+```
+[viewM setIsNeedCycle:YES]; // 让bannerView 无限循环, 默认 不循环
+```
+
+### 6.设置bannerView 介绍文字的属性
 ```
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
 [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
