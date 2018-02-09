@@ -42,6 +42,7 @@
 		797B3F651DDAFA5000204B47 /* KNLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F641DDAFA5000204B47 /* KNLocationController.m */; };
 		797B3F681DDAFA5900204B47 /* KNBlendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F671DDAFA5900204B47 /* KNBlendController.m */; };
 		797B3F6B1DDAFAF300204B47 /* KNRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F6A1DDAFAF300204B47 /* KNRootController.m */; };
+		79FB5373202DA7D60083D6D2 /* KNWeekProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FB5372202DA7D60083D6D2 /* KNWeekProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,8 @@
 		797B3F671DDAFA5900204B47 /* KNBlendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBlendController.m; sourceTree = "<group>"; };
 		797B3F691DDAFAF300204B47 /* KNRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNRootController.h; sourceTree = "<group>"; };
 		797B3F6A1DDAFAF300204B47 /* KNRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNRootController.m; sourceTree = "<group>"; };
+		79FB5371202DA7D60083D6D2 /* KNWeekProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNWeekProxy.h; sourceTree = "<group>"; };
+		79FB5372202DA7D60083D6D2 /* KNWeekProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNWeekProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +216,8 @@
 		797B3F0D1DDAF95B00204B47 /* KNBannerView */ = {
 			isa = PBXGroup;
 			children = (
+				79FB5371202DA7D60083D6D2 /* KNWeekProxy.h */,
+				79FB5372202DA7D60083D6D2 /* KNWeekProxy.m */,
 				797B3F151DDAF95B00204B47 /* KNBannerView.h */,
 				797B3F161DDAF95B00204B47 /* KNBannerView.m */,
 				797B3F0E1DDAF95B00204B47 /* KNBannerCollectionViewCell.h */,
@@ -424,6 +429,7 @@
 				797B3F4C1DDAF96A00204B47 /* SDWebImageDecoder.m in Sources */,
 				797B3F531DDAF96A00204B47 /* UIImage+MultiFormat.m in Sources */,
 				797B3F541DDAF96A00204B47 /* UIImage+WebP.m in Sources */,
+				79FB5373202DA7D60083D6D2 /* KNWeekProxy.m in Sources */,
 				797B3F4E1DDAF96A00204B47 /* SDWebImageDownloaderOperation.m in Sources */,
 				797B3F6B1DDAFAF300204B47 /* KNRootController.m in Sources */,
 				797B3F571DDAF96A00204B47 /* UIView+WebCacheOperation.m in Sources */,

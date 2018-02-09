@@ -29,15 +29,9 @@
         
         NSString *url1 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29llpshkj20m80dwjt6.jpg";
         UIImage *img2 = [UIImage imageNamed:@"2Change"];
-        NSString *url3 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lnhmypj20m80gojtg.jpg";
-        UIImage *img4 = [UIImage imageNamed:@"4Change"];
-        NSString *url5 = @"http://ww4.sinaimg.cn/mw690/9bbc284bgw1fb29lsbrfzj20m80godjg.jpg";
         
         [_changeArr addObject:url1];
         [_changeArr addObject:img2];
-        [_changeArr addObject:url3];
-        [_changeArr addObject:img4];
-        [_changeArr addObject:url5];
     }
     return _changeArr;
 }
@@ -70,6 +64,8 @@
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
+    
+    [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
 }
 
 - (void)setupNav{

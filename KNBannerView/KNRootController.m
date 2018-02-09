@@ -24,8 +24,6 @@
     UIBarButtonItem *backIetm = [[UIBarButtonItem alloc] init];
     backIetm.title =@"返回";
     self.navigationItem.backBarButtonItem = backIetm;
-//    self.navigationController.navigationItem.backBarButtonItem = backIetm;
-    
     [self setupScrollView];
 }
 
