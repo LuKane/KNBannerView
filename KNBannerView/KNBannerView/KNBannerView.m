@@ -12,6 +12,8 @@
 #import "UIView+KNExtension.h"
 #import "KNBannerPageControl.h"
 
+#import "KNWeekProxy.h"
+
 typedef NS_ENUM(NSInteger,KNBannerType){
     KNBannerTypeNetwork,  // 网络
     KNBannerTypeLocation, // 本地
@@ -423,7 +425,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [self removeTimer];
     }
     
-    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:self selector:@selector(timerRun) userInfo:nil repeats:YES];
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:[KNWeekProxy proxyWithTarget:self] selector:@selector(timerRun) userInfo:nil repeats:YES];
     _bannerTimer = timer;
     
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -474,6 +476,10 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [super layoutSubviews];
     
     [_pageControl setFrame:(CGRect){{0,self.height - 30},{self.width,30}}];
+}
+
+- (void)dealloc{
+    NSLog(@"dealloc");
 }
 
 @end
