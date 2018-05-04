@@ -23,6 +23,7 @@
 * 8.多张图片滚动时 文字的多种显示样式.单张图片时的样式
 * 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 * 10.新增 当BannerView生成之后, 修改内部展示的图片.
+* 11.新增 Model的属性,左右边距 && 是否有圆角
 
 ## 二.方法定义及调用
 ### 1.类方法创建BannerView:本地图片和网络图片
@@ -69,9 +70,14 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 
 ```
 
-### 5.让 BannerView 无限循环 (2018-1-11 日更新)
+### 5.1 让 BannerView 无限循环 (2018-1-11 日更新)
 ```
 [viewM setIsNeedCycle:YES]; // 让bannerView 无限循环, 默认 不循环
+```
+### 5.2 BannerView 新增 左右边距 和 是否有圆角 (2018-05-04更新)
+```
+[viewM setBannerCornerRadius:8]; // 切个圆角
+[viewM setLeftMargin:10]; // 设置个边距
 ```
 
 ### 6.设置bannerView 介绍文字的属性
