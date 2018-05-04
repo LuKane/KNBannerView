@@ -23,7 +23,7 @@
 * 8.多张图片滚动时 文字的多种显示样式.单张图片时的样式
 * 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 * 10.新增 当BannerView生成之后, 修改内部展示的图片.
-* 11.新增 Model的属性,左右边距 && 是否有圆角
+* 11.新增 Model的属性,左右边距 && 是否有圆角 (2018/05/04日更新)
 
 ## 二.方法定义及调用
 ### 1.类方法创建BannerView:本地图片和网络图片
