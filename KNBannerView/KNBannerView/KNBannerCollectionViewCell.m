@@ -36,6 +36,7 @@
 - (void)setupImageView{
     UIImageView *imageView = [[UIImageView alloc] init];
     [imageView setUserInteractionEnabled:YES];
+    imageView.clipsToBounds = true;
     [self.contentView addSubview:imageView];
     _imageView = imageView;
     
@@ -84,7 +85,19 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    [_imageView setFrame:self.bounds];
+    
+    if(_leftMargin == 0 && _bannerCornerRadius == 0){ // 无 圆角 && 无 左右间距
+        [_imageView setFrame:self.bounds];
+    }else{
+        if(_bannerCornerRadius != 0 && _bannerCornerRadius != _imageView.layer.cornerRadius){
+            _imageView.layer.cornerRadius = _bannerCornerRadius;
+            [_imageView setFrame:self.bounds];
+        }
+        
+        if(_leftMargin != 0){
+            [_imageView setFrame:CGRectMake(_leftMargin, 0, self.width - 2 * _leftMargin, self.height)];
+        }
+    }
     [_viewText setFrame:CGRectMake(0, self.height - TextHeight, self.width,TextHeight)];
 }
 

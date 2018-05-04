@@ -31,4 +31,8 @@
 /* .m文件中所需要的imageView */
 @property (nonatomic, strong) UIImageView *imageView;
 
+/* 2018/05/04 -> banner是否需要 左右间距 || 圆角 */
+@property (nonatomic,assign) CGFloat  leftMargin;
+@property (nonatomic,assign) CGFloat  bannerCornerRadius;
+
 @end
