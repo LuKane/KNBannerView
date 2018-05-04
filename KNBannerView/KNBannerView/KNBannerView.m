@@ -191,6 +191,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [_defaultModel setIsNeedPageControl:NO];
     [_defaultModel setPageControlStyle:KNBannerPageControlStyleRight];
     [_defaultModel setNumberOfPages:self.imageArr.count];
+    
+    
+    /* 2018/05/04 新增,让bannerView中的图片是否有左右间距和切圆角 */
+    _defaultModel.leftMargin = 0;
+    _defaultModel.bannerCornerRadius = 0;
 }
 
 #pragma mark - 设置 text 的参数
@@ -295,6 +300,9 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [self jumpToLocation];
         [_collectionView reloadData];
     }
+    
+    if(_bannerViewModel.leftMargin < 0)         _bannerViewModel.leftMargin = 0;
+    if(_bannerViewModel.bannerCornerRadius < 0) _bannerViewModel.bannerCornerRadius = 0;
 }
 
 #pragma mark - 创建 Text 的 view控件
@@ -377,6 +385,14 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         if([_bannerViewModel isNeedText]){
             [cell setText:_bannerViewModel.textArr[row]];
         }
+    }
+    
+    if(_bannerViewModel.leftMargin != 0){
+        [cell setLeftMargin:_bannerViewModel.leftMargin];
+    }
+    
+    if(_bannerViewModel.bannerCornerRadius != 0){
+        [cell setBannerCornerRadius:_bannerViewModel.bannerCornerRadius];
     }
     
     _collectionViewCell = cell;
@@ -480,12 +496,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    
-    [_pageControl setFrame:(CGRect){{0,self.height - 30},{self.width,30}}];
+    [_pageControl setFrame:(CGRect){{_defaultModel.leftMargin,self.height - 30},{self.width - 2 * _defaultModel.leftMargin,30}}];
 }
 
 - (void)dealloc{
-    NSLog(@"dealloc");
+    // 这里可以测试 BannerView是否能正常销毁
+    NSLog(@"KNBannerView dealloc");
 }
 
 @end
