@@ -2,9 +2,16 @@
 //  KNBannerViewModel.h
 //  KNBannerView
 //
-//  Created by LuKane on 2016/11/10.
+
+//  Created by LuKane on 2015/7/8.
 //  Copyright © 2016年 LuKane. All rights reserved.
 //  这个模型 主要为了 : 一次性设置 多个自定义信息
+
+/**
+ * 使用 KNBannerView的过程中,有任何bug或问题,都可以在github上提出 issue
+ * 或者 联系QQ: 1169604556
+ * Github: https://github.com/LuKane
+ */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
