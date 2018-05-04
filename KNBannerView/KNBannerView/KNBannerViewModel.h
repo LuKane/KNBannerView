@@ -82,4 +82,10 @@ typedef NS_ENUM(NSInteger,KNBannerPageControlStyle){
 /* 是否需要 循环, 默认  不需要 : NO */
 @property (nonatomic, assign) BOOL  isNeedCycle;
 
+/* 左边 和 右边 间距 ,默认 : 0 . 如果设置数值,则左右有间距*/
+@property (nonatomic,assign) CGFloat  leftMargin;
+
+/* banner图片的切角大小, 默认 :0 . 如果设置数值,则有圆角 */
+@property (nonatomic,assign) CGFloat bannerCornerRadius;
+
 @end
