@@ -49,7 +49,7 @@
     __weak typeof(self) weakSelf = self;
     
     SDWebImageManager *mgr = [SDWebImageManager sharedManager];
-    [[mgr imageCache] queryDiskCacheForKey:url done:^(UIImage *image, SDImageCacheType cacheType) {
+    [[mgr imageCache] queryCacheOperationForKey:url done:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
         if(image){
             [_imageView setImage:image];
             [weakSelf layoutSubviews];
