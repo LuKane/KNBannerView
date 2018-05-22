@@ -35,10 +35,10 @@
         UIImage *img5 = [UIImage imageNamed:@"5"];
         
         [_dataArr addObject:img1];
-        [_dataArr addObject:img2];
-        [_dataArr addObject:img3];
-        [_dataArr addObject:img4];
-        [_dataArr addObject:img5];
+//        [_dataArr addObject:img2];
+//        [_dataArr addObject:img3];
+//        [_dataArr addObject:img4];
+//        [_dataArr addObject:img5];
     }
     return _dataArr;
 }
@@ -101,7 +101,6 @@
      */
     [bannerView setDelegate:self]; // 设置代理, 为了实现代理方法
     
-    
     KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
     [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
     [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
@@ -109,6 +108,8 @@
     NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"],[UIImage imageNamed:@"pageControlUnSelected1"], nil];
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
+    [viewM setIsNeedCycle:true];
+    [viewM setIsNeedTimerRun:true];
     
     [bannerView setBannerViewModel:viewM]; // 通过模型设置属性 -->赋值
     
@@ -132,7 +133,7 @@
     [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
     [viewM setTextStayStyle:KNBannerViewTextStayStyleRight];// 将文字 显示放在右边
     
-    NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"], nil];
+    NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"],[UIImage imageNamed:@"pageControlUnSelected1"], nil];
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setPageControlStyle:KNBannerPageControlStyleLeft]; // 设置pageControl 在左边

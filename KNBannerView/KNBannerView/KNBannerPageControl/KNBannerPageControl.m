@@ -59,7 +59,9 @@
         }
         
         if(![_customPageControl isHidden]){
-            [_customPageControl setImageArr:[bannerViewModel pageControlImgArr]];
+            if([[bannerViewModel pageControlImgArr] count] == 2){
+                [_customPageControl setImageArr:[bannerViewModel pageControlImgArr]];
+            }
             [_customPageControl setNumberOfPages:[bannerViewModel numberOfPages]];
         }
     }

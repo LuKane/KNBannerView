@@ -82,9 +82,15 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     [self initializeDefaultData];
     
-    [self jumpToLocation];
-    
     self.bannerViewModel.numberOfPages = self.imageArr.count;
+    
+    [self initializePageControl];
+    
+    [self setBannerModel];
+    
+    if(self.bannerViewModel.isNeedPageControl){
+        _pageControl.hidden = false;
+    }
     
     [_pageControl setBannerViewModel:self.bannerViewModel];
     
@@ -191,7 +197,10 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 #pragma mark - 设置 text 的参数
 - (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
-    
+    [self setBannerModel];
+}
+
+- (void)setBannerModel{
     if(![_bannerViewModel    textStayStyle])
         [_bannerViewModel setTextStayStyle:[_defaultModel textStayStyle]];
     
@@ -280,12 +289,12 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [_pageControl setBannerViewModel:bannerViewModel];
     }
     
-    _defaultModel = bannerViewModel;
+    _defaultModel = _bannerViewModel;
     
     if(_bannerViewModel.isNeedCycle == YES){
         [self jumpToLocation];
     }else{
-        bannerViewModel.isNeedCycle = _bannerViewModel.isNeedCycle;
+        _bannerViewModel.isNeedCycle = _bannerViewModel.isNeedCycle;
         _kAcount = 1;
         [self jumpToLocation];
         [_collectionView reloadData];
@@ -309,7 +318,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     if(_pageControl) return;
     
     if(_imageArr.count == 1){
-        [_pageControl setHidden:YES];
         return;
     }
     
