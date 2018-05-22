@@ -35,10 +35,10 @@
         UIImage *img5 = [UIImage imageNamed:@"5"];
         
         [_dataArr addObject:img1];
-//        [_dataArr addObject:img2];
-//        [_dataArr addObject:img3];
-//        [_dataArr addObject:img4];
-//        [_dataArr addObject:img5];
+        [_dataArr addObject:img2];
+        [_dataArr addObject:img3];
+        [_dataArr addObject:img4];
+        [_dataArr addObject:img5];
     }
     return _dataArr;
 }
