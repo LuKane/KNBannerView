@@ -20,12 +20,6 @@
 
 #import "KNWeekProxy.h"
 
-typedef NS_ENUM(NSInteger,KNBannerType){
-    KNBannerTypeNetwork,  // 网络
-    KNBannerTypeLocation, // 本地
-    KNBannerTypeBlend     // 本地和网络结合
-};
-
 @interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
     UICollectionView        *_collectionView;
     UICollectionViewFlowLayout  *_layout;
