@@ -41,8 +41,12 @@
 
 - (void)setImageArr:(NSArray *)imageArr{
     _imageArr    = imageArr;
-    _selectImg   = imageArr[0];
-    _unSelectImg = imageArr[1];
+    if(imageArr.count == 1){
+        _selectImg   = imageArr[0];
+    }
+    if(imageArr.count == 2){
+        _unSelectImg = imageArr[1];
+    }
 }
 
 - (void)setNumberOfPages:(NSInteger)numberOfPages{

@@ -132,7 +132,7 @@
     [viewM setTextShowStyle:KNBannerViewTextShowStyleStay]; // 设置文字展示的样式
     [viewM setTextStayStyle:KNBannerViewTextStayStyleRight];// 将文字 显示放在右边
     
-    NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"],[UIImage imageNamed:@"pageControlUnSelected1"], nil];
+    NSArray *customPageImgArr = [NSArray arrayWithObjects:[UIImage imageNamed:@"pageControlSelected1"], nil];
     [viewM setPageControlImgArr:[customPageImgArr copy]]; // 设置自定义PageControl的两张图
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setPageControlStyle:KNBannerPageControlStyleLeft]; // 设置pageControl 在左边

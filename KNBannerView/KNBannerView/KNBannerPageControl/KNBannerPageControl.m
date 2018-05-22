@@ -61,8 +61,6 @@
         if(![_customPageControl isHidden]){
             [_customPageControl setImageArr:[bannerViewModel pageControlImgArr]];
             [_customPageControl setNumberOfPages:[bannerViewModel numberOfPages]];
-            
-            
         }
     }
     
