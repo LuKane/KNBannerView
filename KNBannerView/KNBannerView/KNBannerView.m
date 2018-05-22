@@ -27,7 +27,6 @@ typedef NS_ENUM(NSInteger,KNBannerType){
 };
 
 @interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
-    KNBannerType             _bannerImageType;
     UICollectionView        *_collectionView;
     UICollectionViewFlowLayout  *_layout;
     KNBannerCollectionViewCell    *_collectionViewCell;
@@ -103,7 +102,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setLocationImgArr:(NSMutableArray *)locationImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    _bannerImageType = KNBannerTypeLocation;
     _locationImgArr = locationImgArr;
     for (NSInteger i = 0; i < locationImgArr.count; i++) {
         BOOL isString = [locationImgArr[i] isKindOfClass:[UIImage class]];
@@ -119,7 +117,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setNetWorkImgArr:(NSMutableArray *)netWorkImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    _bannerImageType = KNBannerTypeNetwork;
     _netWorkImgArr = netWorkImgArr;
     for (NSInteger i = 0; i < netWorkImgArr.count; i++) {
         BOOL isHttpString = false;
@@ -141,7 +138,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setBlendImgArr:(NSMutableArray *)blendImgArr{
     [self.imageArr removeAllObjects];
     [_collectionView reloadData]; // 重新给 数组赋值,则刷新 collectionView
-    _bannerImageType = KNBannerTypeBlend;
     _blendImgArr = blendImgArr;
     for (NSInteger i = 0; i < blendImgArr.count; i++) {
         BOOL isBlend = false;
