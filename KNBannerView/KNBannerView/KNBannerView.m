@@ -294,7 +294,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     if(_bannerViewModel.isNeedCycle == YES){
         [self jumpToLocation];
     }else{
-        _bannerViewModel.isNeedCycle = _bannerViewModel.isNeedCycle;
+        _defaultModel.isNeedCycle = _bannerViewModel.isNeedCycle;
         _kAcount = 1;
         [self jumpToLocation];
         [_collectionView reloadData];
