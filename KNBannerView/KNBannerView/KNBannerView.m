@@ -178,7 +178,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [_defaultModel setTextShowStyle:KNBannerViewTextShowStyleNormal];
     [_defaultModel setBannerTimeInterval:1.5f];
     [_defaultModel setIsNeedTimerRun:NO];
-    [_defaultModel setPlaceHolder:[UIImage imageNamed:@"KNBannerViewSource.bundle/placeHolder.png"]];
+    [_defaultModel setPlaceHolder:[self createImageWithUIColor:[UIColor lightTextColor]]];
     [_defaultModel setIsNeedCycle:NO];
     
     [_defaultModel setPageControlImgArr:nil];
@@ -489,6 +489,17 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         return YES;
     }
     return NO;
+}
+
+- (UIImage *)createImageWithUIColor:(UIColor *)imageColor{
+    CGRect rect = CGRectMake(0, 0, 1.f, 1.f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [imageColor CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 - (void)layoutSubviews{
