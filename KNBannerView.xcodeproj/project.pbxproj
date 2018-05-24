@@ -41,7 +41,6 @@
 		797B3F201DDAF95B00204B47 /* KNCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F141DDAF95B00204B47 /* KNCustomPageControl.m */; };
 		797B3F211DDAF95B00204B47 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F161DDAF95B00204B47 /* KNBannerView.m */; };
 		797B3F221DDAF95B00204B47 /* KNBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F181DDAF95B00204B47 /* KNBannerViewModel.m */; };
-		797B3F231DDAF95B00204B47 /* KNBannerViewSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 797B3F191DDAF95B00204B47 /* KNBannerViewSource.bundle */; };
 		797B3F241DDAF95B00204B47 /* KNBannerViewText.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F1B1DDAF95B00204B47 /* KNBannerViewText.m */; };
 		797B3F251DDAF95B00204B47 /* UIView+KNExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F1D1DDAF95B00204B47 /* UIView+KNExtension.m */; };
 		797B3F621DDAFA4500204B47 /* KNNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F611DDAFA4500204B47 /* KNNetworkController.m */; };
@@ -130,7 +129,6 @@
 		797B3F161DDAF95B00204B47 /* KNBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerView.m; sourceTree = "<group>"; };
 		797B3F171DDAF95B00204B47 /* KNBannerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerViewModel.h; sourceTree = "<group>"; };
 		797B3F181DDAF95B00204B47 /* KNBannerViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerViewModel.m; sourceTree = "<group>"; };
-		797B3F191DDAF95B00204B47 /* KNBannerViewSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KNBannerViewSource.bundle; sourceTree = "<group>"; };
 		797B3F1A1DDAF95B00204B47 /* KNBannerViewText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerViewText.h; sourceTree = "<group>"; };
 		797B3F1B1DDAF95B00204B47 /* KNBannerViewText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerViewText.m; sourceTree = "<group>"; };
 		797B3F1C1DDAF95B00204B47 /* UIView+KNExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KNExtension.h"; sourceTree = "<group>"; };
@@ -307,7 +305,6 @@
 				797B3F1C1DDAF95B00204B47 /* UIView+KNExtension.h */,
 				797B3F1D1DDAF95B00204B47 /* UIView+KNExtension.m */,
 				797B3F101DDAF95B00204B47 /* KNBannerPageControl */,
-				797B3F191DDAF95B00204B47 /* KNBannerViewSource.bundle */,
 			);
 			path = KNBannerView;
 			sourceTree = "<group>";
@@ -431,7 +428,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				797B3F231DDAF95B00204B47 /* KNBannerViewSource.bundle in Resources */,
 				3CEB6D311BEC39650020765C /* Main.storyboard in Resources */,
 				3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */,
 				3CEB6D331BEC39650020765C /* Images.xcassets in Resources */,
