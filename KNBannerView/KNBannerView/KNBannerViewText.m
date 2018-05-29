@@ -15,13 +15,8 @@
 #import "KNBannerViewText.h"
 #import "KNBannerViewModel.h"
 
-#define ShowMultiple 0.200
-#define StayMultiple 0.600
-
 @implementation KNBannerViewText{
     UILabel                  *_textLabel;
-    KNBannerViewTextShowStyle _textShowStyle;
-    NSInteger                 _bannerTimeInterval;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -59,24 +54,10 @@
         default:
             break;
     }
-    
-    _textShowStyle      = [bannerViewModel textShowStyle];
-    _bannerTimeInterval = [bannerViewModel bannerTimeInterval];
 }
 
 - (void)setText:(NSString *)text{
     [_textLabel setText:text];
-    
-    switch (_textShowStyle) {
-        case KNBannerViewTextShowStyleNormal:
-            [_textLabel setAlpha:1.f];
-            break;
-        case KNBannerViewTextShowStyleStay:
-            [_textLabel setAlpha:1.f];
-            break;            
-        default:
-            break;
-    }
 }
 
 - (void)layoutSubviews{

@@ -15,8 +15,6 @@
 		3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D341BEC39650020765C /* LaunchScreen.xib */; };
 		3CEB6D421BEC39650020765C /* KNBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D411BEC39650020765C /* KNBannerViewTests.m */; };
 		797B3F1E1DDAF95B00204B47 /* KNBannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F0F1DDAF95B00204B47 /* KNBannerCollectionViewCell.m */; };
-		797B3F1F1DDAF95B00204B47 /* KNBannerPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F121DDAF95B00204B47 /* KNBannerPageControl.m */; };
-		797B3F201DDAF95B00204B47 /* KNCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F141DDAF95B00204B47 /* KNCustomPageControl.m */; };
 		797B3F211DDAF95B00204B47 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F161DDAF95B00204B47 /* KNBannerView.m */; };
 		797B3F221DDAF95B00204B47 /* KNBannerViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F181DDAF95B00204B47 /* KNBannerViewModel.m */; };
 		797B3F241DDAF95B00204B47 /* KNBannerViewText.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F1B1DDAF95B00204B47 /* KNBannerViewText.m */; };
@@ -25,6 +23,8 @@
 		797B3F651DDAFA5000204B47 /* KNLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F641DDAFA5000204B47 /* KNLocationController.m */; };
 		797B3F681DDAFA5900204B47 /* KNBlendController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F671DDAFA5900204B47 /* KNBlendController.m */; };
 		797B3F6B1DDAFAF300204B47 /* KNRootController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F6A1DDAFAF300204B47 /* KNRootController.m */; };
+		79F0856E20B6AD5400D766BC /* KNBannerPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F0856A20B6AD5400D766BC /* KNBannerPageControl.m */; };
+		79F0857120B6AD9200D766BC /* KNCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F0856F20B6AD9100D766BC /* KNCustomPageControl.m */; };
 		79FB5373202DA7D60083D6D2 /* KNWeekProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FB5372202DA7D60083D6D2 /* KNWeekProxy.m */; };
 		D58599B77DA445420E1DDD59 /* libPods-KNBannerView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BB979A6D22894A0D123708A /* libPods-KNBannerView.a */; };
 /* End PBXBuildFile section */
@@ -56,10 +56,6 @@
 		5BB979A6D22894A0D123708A /* libPods-KNBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNBannerView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		797B3F0E1DDAF95B00204B47 /* KNBannerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerCollectionViewCell.h; sourceTree = "<group>"; };
 		797B3F0F1DDAF95B00204B47 /* KNBannerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerCollectionViewCell.m; sourceTree = "<group>"; };
-		797B3F111DDAF95B00204B47 /* KNBannerPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerPageControl.h; sourceTree = "<group>"; };
-		797B3F121DDAF95B00204B47 /* KNBannerPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerPageControl.m; sourceTree = "<group>"; };
-		797B3F131DDAF95B00204B47 /* KNCustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCustomPageControl.h; sourceTree = "<group>"; };
-		797B3F141DDAF95B00204B47 /* KNCustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCustomPageControl.m; sourceTree = "<group>"; };
 		797B3F151DDAF95B00204B47 /* KNBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerView.h; sourceTree = "<group>"; };
 		797B3F161DDAF95B00204B47 /* KNBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerView.m; sourceTree = "<group>"; };
 		797B3F171DDAF95B00204B47 /* KNBannerViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerViewModel.h; sourceTree = "<group>"; };
@@ -76,6 +72,10 @@
 		797B3F671DDAFA5900204B47 /* KNBlendController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBlendController.m; sourceTree = "<group>"; };
 		797B3F691DDAFAF300204B47 /* KNRootController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNRootController.h; sourceTree = "<group>"; };
 		797B3F6A1DDAFAF300204B47 /* KNRootController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNRootController.m; sourceTree = "<group>"; };
+		79F0856A20B6AD5400D766BC /* KNBannerPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNBannerPageControl.m; sourceTree = "<group>"; };
+		79F0856C20B6AD5400D766BC /* KNBannerPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerPageControl.h; sourceTree = "<group>"; };
+		79F0856F20B6AD9100D766BC /* KNCustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNCustomPageControl.m; sourceTree = "<group>"; };
+		79F0857020B6AD9200D766BC /* KNCustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNCustomPageControl.h; sourceTree = "<group>"; };
 		79FB5371202DA7D60083D6D2 /* KNWeekProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNWeekProxy.h; sourceTree = "<group>"; };
 		79FB5372202DA7D60083D6D2 /* KNWeekProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KNWeekProxy.m; sourceTree = "<group>"; };
 		BC11081705DD7CFFC68136BE /* Pods-KNBannerView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KNBannerView.release.xcconfig"; path = "Pods/Target Support Files/Pods-KNBannerView/Pods-KNBannerView.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,20 +192,12 @@
 				797B3F1B1DDAF95B00204B47 /* KNBannerViewText.m */,
 				797B3F1C1DDAF95B00204B47 /* UIView+KNExtension.h */,
 				797B3F1D1DDAF95B00204B47 /* UIView+KNExtension.m */,
-				797B3F101DDAF95B00204B47 /* KNBannerPageControl */,
+				79F0856C20B6AD5400D766BC /* KNBannerPageControl.h */,
+				79F0856A20B6AD5400D766BC /* KNBannerPageControl.m */,
+				79F0857020B6AD9200D766BC /* KNCustomPageControl.h */,
+				79F0856F20B6AD9100D766BC /* KNCustomPageControl.m */,
 			);
 			path = KNBannerView;
-			sourceTree = "<group>";
-		};
-		797B3F101DDAF95B00204B47 /* KNBannerPageControl */ = {
-			isa = PBXGroup;
-			children = (
-				797B3F111DDAF95B00204B47 /* KNBannerPageControl.h */,
-				797B3F121DDAF95B00204B47 /* KNBannerPageControl.m */,
-				797B3F131DDAF95B00204B47 /* KNCustomPageControl.h */,
-				797B3F141DDAF95B00204B47 /* KNCustomPageControl.m */,
-			);
-			path = KNBannerPageControl;
 			sourceTree = "<group>";
 		};
 		797B3F5D1DDAFA2A00204B47 /* Blend(混合) */ = {
@@ -369,7 +361,6 @@
 				3CEB6D2E1BEC39650020765C /* ViewController.m in Sources */,
 				797B3F251DDAF95B00204B47 /* UIView+KNExtension.m in Sources */,
 				797B3F221DDAF95B00204B47 /* KNBannerViewModel.m in Sources */,
-				797B3F1F1DDAF95B00204B47 /* KNBannerPageControl.m in Sources */,
 				797B3F651DDAFA5000204B47 /* KNLocationController.m in Sources */,
 				797B3F621DDAFA4500204B47 /* KNNetworkController.m in Sources */,
 				797B3F1E1DDAF95B00204B47 /* KNBannerCollectionViewCell.m in Sources */,
@@ -378,8 +369,9 @@
 				797B3F241DDAF95B00204B47 /* KNBannerViewText.m in Sources */,
 				3CEB6D2B1BEC39650020765C /* AppDelegate.m in Sources */,
 				797B3F211DDAF95B00204B47 /* KNBannerView.m in Sources */,
+				79F0856E20B6AD5400D766BC /* KNBannerPageControl.m in Sources */,
 				797B3F681DDAFA5900204B47 /* KNBlendController.m in Sources */,
-				797B3F201DDAF95B00204B47 /* KNCustomPageControl.m in Sources */,
+				79F0857120B6AD9200D766BC /* KNCustomPageControl.m in Sources */,
 				3CEB6D281BEC39650020765C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

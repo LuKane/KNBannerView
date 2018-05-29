@@ -7,6 +7,7 @@
 //
 
 #import "KNRootController.h"
+#import <SDImageCache.h>
 
 @interface KNRootController ()
 
@@ -29,6 +30,8 @@
 
 - (void)setupScrollView{
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    scrollView.showsHorizontalScrollIndicator = false;
+    scrollView.showsVerticalScrollIndicator = false;
     _scrollView  = scrollView;
     [self.view addSubview:scrollView];
 }
@@ -45,6 +48,12 @@
         [_textArr addObject:@"谢谢大家!!!"];
     }
     return _textArr;
+}
+
+- (void)dealloc{
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        
+    }];
 }
 
 @end
