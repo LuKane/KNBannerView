@@ -1,22 +1,25 @@
 # KNBannerView
-无限循环轮播器:本地图片,网络图片,混合图片(本地&&网络)
+####无限循环轮播器:
+* 本地图片
+* 网络图片
+* 混合图片(本地&&网络)
 
-⭐️⭐️⭐️⭐️⭐️⭐️⭐️ 有任何需要增加的功能,请直接邮箱联系我.欢迎点赞,谢谢 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+#### ⭐️⭐️⭐️⭐️⭐️⭐️⭐️ 有任何需要增加的功能,请直接邮箱联系我.欢迎点赞,谢谢 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewNetWork.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewlocate.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBlend.gif?raw=true)
 
 ## 一.功能描述及要点
-* 1.无限图片轮播器,加载 '本地图片' && '网络图片' && '本地和网络的混合图片'
-* 2.修改成SDWebImage下载图片
-* 3.通过代理方法执行图片的点击事件
-* 4.collectView工作原理实现无限滚动
-* 5.设置UIPageControl的位置:(左,中,右) 以及颜色设置
-* 6.设置自定义PageControl,位置:(左,中,右),自定义图片
-* 7.设置描述文字的位置:(左,中,右) 以及字体颜色,大小,背景颜色
-* 8.多张图片滚动时 文字的多种显示样式.单张图片时的样式
-* 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
-* 10.新增 当BannerView生成之后, 修改内部展示的图片.
-* 11.新增 Model的属性,左右边距 && 是否有圆角 (2018/05/04日更新)
+- [x] 1.无限图片轮播器,加载 '本地图片' && '网络图片' && '本地和网络的混合图片'
+- [x] 2.修改成SDWebImage下载图片
+- [x] 3.通过代理方法执行图片的点击事件
+- [x] 4.collectView工作原理实现无限滚动
+- [x] 5.设置UIPageControl的位置:(左,中,右) 以及颜色设置
+- [x] 6.设置自定义PageControl,位置:(左,中,右),自定义图片
+- [x] 7.设置描述文字的位置:(左,中,右) 以及字体颜色,大小,背景颜色
+- [x] 8.多张图片滚动时 文字的多种显示样式.单张图片时的样式
+- [x] 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
+- [x] 10.新增 当BannerView生成之后, 修改内部展示的图片.
+- [x] 11.新增 Model的属性,左右边距 && 是否有圆角 (2018/05/04日更新)
 
 ## 二.方法定义及调用
 ### 1.类方法创建BannerView:本地图片和网络图片
