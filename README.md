@@ -1,10 +1,12 @@
 # KNBannerView
-####无限循环轮播器:
+
+#### 无限循环轮播器:
 * 本地图片
 * 网络图片
 * 混合图片(本地&&网络)
 
-#### ⭐️⭐️⭐️⭐️⭐️⭐️⭐️ 有任何需要增加的功能,请直接邮箱联系我.欢迎点赞,谢谢 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
+#### Swift版本
+[SwiftBannerView](https://github.com/LuKane/SwiftBannerView)
 
 ![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewNetWork.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewlocate.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBlend.gif?raw=true)
 
