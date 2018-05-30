@@ -4,13 +4,13 @@
 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️ 有任何需要增加的功能,请直接邮箱联系我.欢迎点赞,谢谢 ⭐️⭐️⭐️⭐️⭐️⭐️⭐️
 
 // 1.网络图片
-![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewNetWork.gif?raw=true)
+![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewNetWork.gif?raw=true)
 
 // 2.本地图片
-![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewLocation.gif?raw=true)
+![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewlocate.gif?raw=true)
 
 // 3.混合图片 (本地 && 网络)
-![image](https://github.com/LuKane/KNImageResource/blob/master/BannerViewBlend.gif?raw=true)
+![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBlend.gif?raw=true)
 
 ## 一.功能描述及要点
 * 1.无限图片轮播器,加载 '本地图片' && '网络图片' && '本地和网络的混合图片'
