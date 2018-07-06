@@ -23,6 +23,7 @@
         [_dataArr addObject:@"KNNetworkController"];
         [_dataArr addObject:@"KNLocationController"];
         [_dataArr addObject:@"KNBlendController"];
+        [_dataArr addObject:@"KNBackGroundController"];
     }
     return _dataArr;
 }
@@ -44,7 +45,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return self.dataArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

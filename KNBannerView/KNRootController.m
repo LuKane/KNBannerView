@@ -32,6 +32,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     scrollView.showsHorizontalScrollIndicator = false;
     scrollView.showsVerticalScrollIndicator = false;
+    scrollView.backgroundColor = [UIColor clearColor];
     _scrollView  = scrollView;
     [self.view addSubview:scrollView];
 }

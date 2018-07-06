@@ -23,7 +23,8 @@
 @interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
     UICollectionView        *_collectionView;
     UICollectionViewFlowLayout  *_layout;
-    KNBannerCollectionViewCell    *_collectionViewCell;
+    KNBannerCollectionViewCell  *_collectionViewCell;
+    KNBannerCollectionViewCell  *_collectionUseCell;
     NSInteger                _page;// 页数
     KNBannerViewModel       *_defaultModel;// 默认的模型
     NSTimer                 *_bannerTimer; // bannerView 的 timer
@@ -32,6 +33,9 @@
     BOOL                     _isNeedText;
     KNBannerPageControl     *_pageControl;
     NSInteger                _kAcount; // 图片的倍数 =   * 100
+    
+    CGFloat                 _lastContentOffsetX; // 滑动到中间时,偏移量
+    BOOL                    _firstSet; // 第一次设置
 }
 
 /* 临时图片数组 : 将.h 3种类型的数组的内容放入此数组中 */
@@ -85,9 +89,9 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     self.bannerViewModel.numberOfPages = self.imageArr.count;
     
     [self initializePageControl];
-    
+
     [self setBannerModel];
-    
+
     if(self.bannerViewModel.isNeedPageControl){
         _pageControl.hidden = false;
     }
@@ -156,8 +160,19 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [self jumpToLocation];
 }
 
+- (void)setChangeColorArr:(NSMutableArray *)changeColorArr{
+    _changeColorArr = changeColorArr;
+    if (![self isEmptyArray:_changeColorArr]) {
+        _bannerViewModel.bgChangeColorArr = [NSMutableArray arrayWithArray:_changeColorArr];
+    }
+    _firstSet = false;
+    [self jumpToLocation];
+}
+
 - (void)jumpToLocation{
-    if(_imageArr.count == 1) return;
+    if(_imageArr.count == 1){
+        return;
+    }
     
     NSInteger index = _imageArr.count * _kAcount * 0.5;
     if(!_bannerViewModel.isNeedCycle){
@@ -301,6 +316,16 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     if(_bannerViewModel.leftMargin < 0)         _bannerViewModel.leftMargin = 0;
     if(_bannerViewModel.bannerCornerRadius < 0) _bannerViewModel.bannerCornerRadius = 0;
+    
+    if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
+        [_bannerViewModel.bgChangeColorArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if(![obj isKindOfClass:[UIColor class]]){
+                if (DEBUG){
+                    NSLog(@"需要传入 UIColor 对象");
+                }
+            }
+        }];
+    }
 }
 
 #pragma mark - 创建 Text 的 view控件
@@ -341,7 +366,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:[self bounds] collectionViewLayout:layout];
     
     [collectionView setBackgroundColor:[UIColor clearColor]];
-    [collectionView setPagingEnabled:YES];
+    [collectionView setPagingEnabled:true];
     
     [collectionView setDelegate:self];
     [collectionView setDataSource:self];
@@ -373,6 +398,16 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [cell setImage:self.imageArr[row]];
     }
     
+    // 设置背景颜色
+    if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
+        cell.bgChangeColor = _bannerViewModel.bgChangeColorArr[row];
+    }
+    
+    if(_firstSet == false){
+        _firstSet = true;
+        _collectionUseCell = cell;
+    }
+    
     if(![cell isSet]){
         [cell setIsSet:YES];
         [cell setBannerViewModel:_bannerViewModel];
@@ -393,6 +428,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }
     
     _collectionViewCell = cell;
+    
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -418,17 +454,64 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     // 设置 pageControl
     CGFloat scrollViewW = scrollView.frame.size.width;
-    CGFloat x = scrollView.contentOffset.x;
+    CGFloat currentContentOffset = scrollView.contentOffset.x;
     
-    NSString *contentOffSetX = [NSString stringWithFormat:@"%f",(x + scrollViewW ) / scrollViewW];
+    NSMutableArray *cellArr = [_collectionView visibleCells].mutableCopy;
+    
+    NSString *contentOffSetX = [NSString stringWithFormat:@"%f",(currentContentOffset + scrollViewW ) / scrollViewW];
+
     if([[contentOffSetX substringWithRange:NSMakeRange(contentOffSetX.length - 6, 6)] isEqualToString:@"000000"]){
+        
+        _lastContentOffsetX = [contentOffSetX floatValue];
+        
         if([_bannerViewModel textShowStyle] != KNBannerViewTextShowStyleNormal){
             NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
             [_viewText setText:_bannerViewModel.textArr[index]];
         }
-        
         NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
+        
+        NSIndexPath *path = [NSIndexPath indexPathForRow:currentContentOffset / scrollViewW inSection:0];
+        _collectionUseCell = (KNBannerCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
+        
         [_pageControl setCurrentPage:index]; // 设置 pageControl
+        
+        if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
+            if([_delegate respondsToSelector:@selector(bannerView:topColor:bottomColor:alpha:isRight:)]){
+                
+                [_delegate bannerView:(KNBannerView *)self
+                             topColor:_bannerViewModel.bgChangeColorArr[index]
+                          bottomColor:nil
+                                alpha:1.0
+                              isRight:true];
+            }
+        }
+    }else{
+        
+        if([self isEmptyArray:_bannerViewModel.bgChangeColorArr]) return;
+        
+        if(cellArr.count == 2){ // 偏移 , 数组第一个颜色 : 原始颜色, 第二个 : 即将改变的颜色
+            KNBannerCollectionViewCell *cell  = cellArr.firstObject;
+            cell = cell == _collectionUseCell? cellArr.lastObject:cellArr.firstObject;
+            if([contentOffSetX containsString:@"."]){
+                BOOL isRight = true;
+                if([contentOffSetX floatValue] < _lastContentOffsetX){
+                    // 往右边跑
+                    isRight = true;
+                }else if([contentOffSetX floatValue] > _lastContentOffsetX){
+                    // 往左边跑
+                    isRight = false;
+                }
+                
+                CGFloat alpha = [[@"0." stringByAppendingString:[[contentOffSetX componentsSeparatedByString:@"."] lastObject]] floatValue];
+                if([_delegate respondsToSelector:@selector(bannerView:topColor:bottomColor:alpha:isRight:)]){
+                    [_delegate bannerView:(KNBannerView *)self
+                                 topColor:_collectionUseCell.bgChangeColor
+                              bottomColor:cell.bgChangeColor
+                                    alpha:alpha
+                                  isRight:isRight];
+                }
+            }
+        }
     }
 }
 
@@ -508,8 +591,10 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 - (void)dealloc{
-    // 这里可以测试 BannerView是否能正常销毁
-    NSLog(@"KNBannerView dealloc");
+    if(DEBUG){
+        // 这里可以测试 BannerView是否能正常销毁
+        NSLog(@"KNBannerView dealloc");
+    }
 }
 
 @end

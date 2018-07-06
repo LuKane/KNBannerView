@@ -12,12 +12,11 @@
 @interface KNNetworkController ()<KNBannerViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *urlArr;
+@property (nonatomic,strong) NSMutableArray *changeArr;
 
 @property (nonatomic,weak  ) KNBannerView *bannerView1;
 @property (nonatomic,weak  ) KNBannerView *bannerView2;
 @property (nonatomic,weak  ) KNBannerView *bannerView3;
-
-@property (nonatomic,strong) NSMutableArray *changeArr;
 
 @end
 
@@ -60,8 +59,7 @@
     self.title = @"网络";
     [self setupNav];
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
@@ -176,10 +174,8 @@
     
     NSLog(@"%@",collectionViewCell.imageView);
     
-    
     NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
 }
-
 
 
 @end

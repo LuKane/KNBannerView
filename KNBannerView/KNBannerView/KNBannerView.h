@@ -31,6 +31,17 @@
  */
 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
 
+/**
+ 当滑动 banner时, 执行的代理方法
+
+ @param bannerView banner
+ @param topColor 当前cell的对应的背景色
+ @param bottomColor 下一个cell对应的背景色
+ @param alpha 当前cell背景色需要的透明度
+ @param isRight banner 是否是向右滑动
+ */
+- (void)bannerView:(KNBannerView *)bannerView topColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor alpha:(CGFloat)alpha isRight:(BOOL)isRight;
+
 @end
 
 @interface KNBannerView : UIView
@@ -45,6 +56,9 @@
 @property (nonatomic, strong) NSMutableArray *netWorkImgArr;
 /* 混合图片数组 */
 @property (nonatomic, strong) NSMutableArray *blendImgArr;
+
+/* 当需要切换背景色时才用到的数组 , 如果 想要进行reloadData 方法, 则 changeColorArr 需要 写在 上面三个数组赋值之前, 详细: 看 BackGroundController 中的写法 */
+@property (nonatomic,strong) NSMutableArray<UIColor *> *changeColorArr;
 
 /* 自定义信息的模型 --> 一次性全部赋值 */
 @property (nonatomic, strong) KNBannerViewModel *bannerViewModel;

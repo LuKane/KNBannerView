@@ -8,7 +8,8 @@
 #### Swift版本
 [SwiftBannerView](https://github.com/LuKane/SwiftBannerView)
 
-![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewNetWork.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewlocate.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBlend.gif?raw=true)
+![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewNetWork.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewlocate.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBlend.gif?raw=true)![image](https://github.com/LuKane/KNImageResource/blob/master/BannerView/BannerViewBackGround.gif?raw=true)
+
 
 ## 一.功能描述及要点
 - [x] 1.无限图片轮播器,加载 '本地图片' && '网络图片' && '本地和网络的混合图片'
@@ -22,6 +23,7 @@
 - [x] 9.在控制器中 设置 self.automaticallyAdjustsScrollViewInsets = NO;让scrollView自动适应屏幕
 - [x] 10.新增 当BannerView生成之后, 修改内部展示的图片.
 - [x] 11.新增 Model的属性,左右边距 && 是否有圆角 (2018/05/04日更新)
+- [x] 12.新增 动态修改控制器的背景色 (2018/07/06日更新)
 
 ## 二.方法定义及调用
 ### 1.类方法创建BannerView:本地图片和网络图片
@@ -78,6 +80,19 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 [viewM setLeftMargin:10]; // 设置个边距
 ```
 
+### 5.3 让BannerView 新增 滚动时, 动态修改 控制器一个控件的背景色(2018-07-06更新)
+```
+[viewM setBgChangeColorArr:self.colorArr.copy];
+```
+
+### 5.4 如果要对图片的url 和 背景色进行修改时 注意:
+```
+// 重要重要重要 : 若要设置 背景色 ,必须写在 图片数组的前面
+_bannerView1.changeColorArr = self.changeColorArr.mutableCopy;
+_bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
+[_bannerView1 reloadData];
+```
+
 ### 6.设置bannerView 介绍文字的属性
 ```
 KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
@@ -90,4 +105,6 @@ KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设
 
 ##### 2>设代理 bannerView.delegate = self;
 
-##### 3>执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
+##### 3>点击执行方法 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index;
+
+##### 4>滚动执行方法 - (void)bannerView:(KNBannerView *)bannerView topColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor alpha:(CGFloat)alpha isRight:(BOOL)isRight

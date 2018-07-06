@@ -35,4 +35,6 @@
 @property (nonatomic,assign) CGFloat  leftMargin;
 @property (nonatomic,assign) CGFloat  bannerCornerRadius;
 
+@property (nonatomic,strong) UIColor *bgChangeColor;
+
 @end
