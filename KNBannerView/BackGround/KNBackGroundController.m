@@ -80,7 +80,7 @@
     self.title = @"背景色切换";
     [self setupNav];
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     UIImageView *topImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 90, self.view.frame.size.width, 180)];
     _topImageView = topImageView;
