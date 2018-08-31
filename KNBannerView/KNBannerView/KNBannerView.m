@@ -21,21 +21,21 @@
 #import "KNWeekProxy.h"
 
 @interface KNBannerView()<UICollectionViewDelegate,UICollectionViewDataSource>{
-    UICollectionView        *_collectionView;
+    UICollectionView            *_collectionView;
     UICollectionViewFlowLayout  *_layout;
     KNBannerCollectionViewCell  *_collectionViewCell;
     KNBannerCollectionViewCell  *_collectionUseCell;
-    NSInteger                _page;// 页数
-    KNBannerViewModel       *_defaultModel;// 默认的模型
-    NSTimer                 *_bannerTimer; // bannerView 的 timer
+    NSInteger                   _page;// 页数
+    KNBannerViewModel           *_defaultModel;// 默认的模型
+    NSTimer                     *_bannerTimer; // bannerView 的 timer
     
-    KNBannerViewText        *_viewText; // 文字 view
-    BOOL                     _isNeedText;
-    KNBannerPageControl     *_pageControl;
-    NSInteger                _kAcount; // 图片的倍数 =   * 100
+    KNBannerViewText            *_viewText; // 文字 view
+    BOOL                        _isNeedText;
+    KNBannerPageControl         *_pageControl;
+    NSInteger                   _kAcount; // 图片的倍数 =   * 100
     
-    CGFloat                 _lastContentOffsetX; // 滑动到中间时,偏移量
-    BOOL                    _firstSet; // 第一次设置
+    CGFloat                     _lastContentOffsetX; // 滑动到中间时,偏移量
+    BOOL                        _firstSet; // 第一次设置
 }
 
 /* 临时图片数组 : 将.h 3种类型的数组的内容放入此数组中 */
@@ -213,6 +213,13 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)setBannerViewModel:(KNBannerViewModel *)bannerViewModel{
     _bannerViewModel = bannerViewModel;
     [self setBannerModel];
+    
+    /* 2018/08/31 修改bug ,当第一次设置就一张图片和颜色时,背景色显示不出来 */
+    if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
+        if(_bannerViewModel.bgChangeColorArr.count == 1){
+            [_delegate bannerView:self topColor:_bannerViewModel.bgChangeColorArr[0] bottomColor:nil alpha:1 isRight:false];
+        }
+    }
 }
 
 - (void)setBannerModel{
@@ -320,9 +327,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
         [_bannerViewModel.bgChangeColorArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if(![obj isKindOfClass:[UIColor class]]){
-                if (DEBUG){
-                    NSLog(@"需要传入 UIColor 对象");
-                }
+//                NSLog(@"需要传入 UIColor 对象");
             }
         }];
     }
@@ -593,7 +598,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)dealloc{
     if(DEBUG){
         // 这里可以测试 BannerView是否能正常销毁
-        NSLog(@"KNBannerView dealloc");
+        // NSLog(@"KNBannerView dealloc");
     }
 }
 
