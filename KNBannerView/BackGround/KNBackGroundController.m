@@ -105,7 +105,15 @@
 
 - (void)rightBtnIBAction{
     // 1.若要设置 背景色 ,必须写在 图片数组的前面
+    
     _bannerView1.changeColorArr = self.changeColorArr.mutableCopy;
+
+    // 1.1 ( 将 背景色 取消掉, 只需设置颜色 为 clearColor)
+//    NSMutableArray *tempArr = [NSMutableArray array];
+//    for (NSInteger i = 0; i < self.changeArr.count; i++) {
+//        [tempArr addObject:[UIColor clearColor]];
+//    }
+//    _bannerView1.changeColorArr = tempArr.mutableCopy;
     
     _bannerView1.netWorkImgArr = [self.changeArr mutableCopy];
     
@@ -129,7 +137,8 @@
     [viewM setCurrentPageIndicatorTintColor:[UIColor orangeColor]];
     [viewM setPageIndicatorTintColor:[UIColor whiteColor]];
     [viewM setPageControlStyle:KNBannerPageControlStyleMiddel];
-    
+    [viewM setIsNeedTimerRun:true];
+    [viewM setIsNeedCycle:true];
     [viewM setIsNeedPageControl:YES]; // 记得设置 YES
     [viewM setIsNeedCycle:YES];
     [viewM setBgChangeColorArr:self.colorArr.copy];
@@ -161,6 +170,8 @@
         }else{
             _topImageView.alpha = 1.0;
         }
+    }else{
+        _topImageView.backgroundColor = nil;
     }
     
     if(bottomColor){
