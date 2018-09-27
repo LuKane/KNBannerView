@@ -11,6 +11,7 @@
 @interface KNCustomPageControl()
 
 @property (nonatomic, strong) NSMutableArray *layerArr;
+@property (nonatomic, assign) NSInteger  selectIndex;
 
 @end
 
@@ -28,15 +29,15 @@
 
 - (void)setCurrentPage:(NSInteger)currentPage{
     _currentPage = currentPage;
-    for (NSInteger i = 0; i < _layerArr.count; i++) {
-        CALayer *layer = _layerArr[i];
-        [layer setContents:(__bridge id _Nullable)_unSelectImg.CGImage];
-        if(currentPage == i){
-            if(_selectImg){
-                [layer setContents:(__bridge id _Nullable)_selectImg.CGImage];
-            }
-        }
-    }
+    
+    if(self.layerArr.count == 0) return;
+    
+    CALayer *layer = _layerArr[_selectIndex];
+    [layer setContents:(__bridge id _Nullable)_unSelectImg.CGImage];
+    
+    CALayer *layer1 = _layerArr[currentPage];
+    [layer1 setContents:(__bridge id _Nullable)_selectImg.CGImage];
+    _selectIndex = currentPage;
 }
 
 - (void)setImageArr:(NSArray *)imageArr{
