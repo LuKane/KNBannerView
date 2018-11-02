@@ -70,7 +70,7 @@ _bannerView3.netWorkImgArr = [self.changeArr mutableCopy];
 
 ```
 
-### 5.1 让 BannerView 无限循环 (2018-1-11 日更新)
+### 5.1 让 BannerView 无限循环 (2018-1-11修改)
 ```
 [viewM setIsNeedCycle:YES]; // 让bannerView 无限循环, 默认 不循环
 ```
