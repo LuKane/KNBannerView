@@ -158,6 +158,14 @@
 }
 
 - (void)bannerView:(KNBannerView *)bannerView topColor:(UIColor *)topColor bottomColor:(UIColor *)bottomColor alpha:(CGFloat)alpha isRight:(BOOL)isRight{
+
+    
+    /* 这里是做判断 , 如果当前数据源 就一张图片时, 就不改变 背景色 */
+    /* bannerView.netWorkImgArr 对应创建时 KNBannerView bannerViewWithNetWorkImagesArr  */
+    
+    if(bannerView.netWorkImgArr.count == 1){
+        return;
+    }
     
     if(topColor){
         _topImageView.backgroundColor = topColor;
