@@ -195,6 +195,12 @@
     }
 }
 
-
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    _bannerView1.frame = CGRectMake(0, 150, self.view.frame.size.width, 180);
+    
+    _topImageView.frame = CGRectMake(0, 90, self.view.frame.size.width, 180);
+    _bottomImageView.frame = CGRectMake(0, 90, self.view.frame.size.width, 180);
+}
 
 @end

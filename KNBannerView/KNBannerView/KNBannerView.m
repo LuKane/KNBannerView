@@ -25,10 +25,8 @@
     UICollectionViewFlowLayout  *_layout;
     KNBannerCollectionViewCell  *_collectionViewCell;
     KNBannerCollectionViewCell  *_collectionUseCell;
-    NSInteger                   _page;// 页数
     KNBannerViewModel           *_defaultModel;// 默认的模型
     NSTimer                     *_bannerTimer; // bannerView 的 timer
-    
     KNBannerViewText            *_viewText; // 文字 view
     BOOL                        _isNeedText;
     KNBannerPageControl         *_pageControl;
@@ -385,6 +383,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     [self addSubview:collectionView];
     _collectionView = collectionView;
 }
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if(self.imageArr.count == 1) return 1;
     return self.imageArr.count * _kAcount;
@@ -474,7 +473,6 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
             [_viewText setText:_bannerViewModel.textArr[index]];
         }
         NSInteger index = ([contentOffSetX integerValue] - 1) % [self.imageArr count];
-        
         NSIndexPath *path = [NSIndexPath indexPathForRow:currentContentOffset / scrollViewW inSection:0];
         _collectionUseCell = (KNBannerCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
         
@@ -593,6 +591,26 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)layoutSubviews{
     [super layoutSubviews];
     [_pageControl setFrame:(CGRect){{_defaultModel.leftMargin,self.height - 30},{self.width - 2 * _defaultModel.leftMargin,30}}];
+    
+    _layout.itemSize = self.size;
+    _collectionView.frame = self.bounds;
+    _collectionView.collectionViewLayout = _layout;
+    [_collectionView reloadData];
+    
+    if(_viewText){
+        _viewText.frame = CGRectMake(0, self.height - TextHeight, self.width,TextHeight);
+    }
+    
+    if(_imageArr.count == 1){
+        return;
+    }
+    
+    NSInteger index = _imageArr.count * _kAcount * 0.5;
+    if(!_bannerViewModel.isNeedCycle){
+        index = 0;
+    }
+    
+    [_collectionView setContentOffset:(CGPoint){index * _collectionView.width,0}];
 }
 
 - (void)dealloc{

@@ -18,7 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navigationController.navigationBar.translucent = NO;
     
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
     
@@ -29,7 +32,7 @@
 }
 
 - (void)setupScrollView{
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
     scrollView.showsHorizontalScrollIndicator = false;
     scrollView.showsVerticalScrollIndicator = false;
     scrollView.backgroundColor = [UIColor clearColor];
@@ -55,6 +58,11 @@
     [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
         
     }];
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    self.scrollView.frame = self.view.bounds;
 }
 
 @end

@@ -64,7 +64,7 @@
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
     
-    [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
+    [self.scrollView setContentSize:(CGSize){0,10 + 30 * 3 + 180 * 3}];
 }
 
 - (void)setupNav{
@@ -91,7 +91,7 @@
 // 样式1
 - (void)setupNetWorkBannerView1{
     KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:self.urlArr
-                                            frame:CGRectMake(0, 90, self.view.frame.size.width, 180)];
+                                            frame:CGRectMake(0,10, self.view.frame.size.width, 180)];
     
     /*
      * 以下都是 基本属性的设置
@@ -113,10 +113,9 @@
     [self.scrollView addSubview:bannerView];
     _bannerView1 = bannerView;
 }
-
 - (void)setupNetWorkBannerView2{
     KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:self.urlArr
-                                                                      frame:CGRectMake(0, 90 + 30 + 180, self.view.frame.size.width, 180)];
+                                                                      frame:CGRectMake(0, 10 + 30 + 180, self.view.frame.size.width, 180)];
     
     /*
      * 以下都是 基本属性的设置
@@ -141,10 +140,9 @@
     [self.scrollView addSubview:bannerView];
     _bannerView2 = bannerView;
 }
-
 - (void)setupNetWorkBannerView3{
     KNBannerView *bannerView = [KNBannerView bannerViewWithNetWorkImagesArr:self.urlArr
-                                                                      frame:CGRectMake(0, 90 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180)];
+                                                                      frame:CGRectMake(0, 10 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180)];
     
     /*
      * 以下都是 基本属性的设置
@@ -166,6 +164,13 @@
     
     [self.scrollView addSubview:bannerView];
     _bannerView3 = bannerView;
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    _bannerView1.frame = CGRectMake(0, 10, self.view.frame.size.width, 180);
+    _bannerView2.frame = CGRectMake(0, 10 + 30 + 180, self.view.frame.size.width, 180);
+    _bannerView3.frame = CGRectMake(0, 10 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180);
 }
 
 /****************************** == Delegate == ********************************/

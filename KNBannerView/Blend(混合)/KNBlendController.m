@@ -65,7 +65,7 @@
     [self setupNetWorkBannerView2];
     [self setupNetWorkBannerView3];
     
-    [self.scrollView setContentSize:(CGSize){0,90 + 30 * 3 + 180 * 3}];
+    [self.scrollView setContentSize:(CGSize){0,10 + 30 * 3 + 180 * 3}];
 }
 
 - (void)setupNav{
@@ -89,12 +89,11 @@
 }
 
 - (void)setupNetWorkBannerView1{
-    KNBannerView *bannerView = [KNBannerView bannerViewWithBlendImagesArr:[self.dataArr copy] frame:CGRectMake(0, 90, self.view.frame.size.width, 180)];
+    KNBannerView *bannerView = [KNBannerView bannerViewWithBlendImagesArr:[self.dataArr copy] frame:CGRectMake(0, 10, self.view.frame.size.width, 180)];
     /*
      * 以下都是 基本属性的设置
      */
     [bannerView setDelegate:self]; // 设置代理, 为了实现代理方法
-    
     
     KNBannerViewModel *viewM = [[KNBannerViewModel alloc] init]; // 统一通过 设置 模型来设置 里面的参数
     [viewM setTextArr:[self.textArr copy]]; // 设置文字, 注意:如果文字和图片的数量不相符,则没有文字.如果不要文字,则不传
@@ -108,14 +107,13 @@
     
     [bannerView setTag:0]; // 标识是哪个bannerView
     
-    
     [self.scrollView addSubview:bannerView];
     
     _bannerView1 = bannerView;
 }
 
 - (void)setupNetWorkBannerView2{
-    KNBannerView *bannerView = [KNBannerView bannerViewWithBlendImagesArr:[self.dataArr copy] frame:CGRectMake(0, 90 + 30 + 180, self.view.frame.size.width, 180)];
+    KNBannerView *bannerView = [KNBannerView bannerViewWithBlendImagesArr:[self.dataArr copy] frame:CGRectMake(0, 10 + 30 + 180, self.view.frame.size.width, 180)];
     
     /*
      * 以下都是 基本属性的设置
@@ -142,7 +140,7 @@
 
 - (void)setupNetWorkBannerView3{
     KNBannerView *bannerView = [KNBannerView bannerViewWithBlendImagesArr:[self.dataArr copy]
-                                                                       frame:CGRectMake(0, 90 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180)];
+                                                                       frame:CGRectMake(0, 10 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180)];
     
     /*
      * 以下都是 基本属性的设置
@@ -169,6 +167,13 @@
 
 - (void)bannerView:(KNBannerView *)bannerView collectionView:(UICollectionView *)collectionView collectionViewCell:(KNBannerCollectionViewCell *)collectionViewCell didSelectItemAtIndexPath:(NSInteger)index{
     NSLog(@"BannerView :%zd -- index :%zd",bannerView.tag,index);
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    _bannerView1.frame = CGRectMake(0, 10, self.view.frame.size.width, 180);
+    _bannerView2.frame = CGRectMake(0, 10 + 30 + 180, self.view.frame.size.width, 180);
+    _bannerView3.frame = CGRectMake(0, 10 + 30 + 180 + 30 + 180, self.view.frame.size.width, 180);
 }
 
 @end

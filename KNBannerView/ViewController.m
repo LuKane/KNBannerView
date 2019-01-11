@@ -11,6 +11,7 @@
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic,weak  ) UITableView *tableView;
 
 @end
 
@@ -38,10 +39,11 @@
 }
 
 - (void)setupTableView{
-    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){{0,64},self.view.bounds.size} style:UITableViewStyleGrouped];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     [tableView setDataSource:self];
     [tableView setDelegate:self];
     [self.view addSubview:tableView];
+    self.tableView = tableView;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -76,6 +78,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;
+}
+
+- (void)viewWillLayoutSubviews{
+    [super viewWillLayoutSubviews];
+    self.tableView.frame = self.view.bounds;
 }
 
 @end
