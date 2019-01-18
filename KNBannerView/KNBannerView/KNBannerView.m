@@ -82,6 +82,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 
 - (void)reloadData{
     
+    if(self.imageArr.count == 0) return;
+    
     [self initializeDefaultData];
     
     self.bannerViewModel.numberOfPages = self.imageArr.count;
@@ -168,7 +170,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 - (void)jumpToLocation{
-    if(_imageArr.count == 1){
+    if(_imageArr.count == 1 || _imageArr.count == 0){
         return;
     }
     
@@ -344,7 +346,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)initializePageControl{
     if(_pageControl) return;
     
-    if(_imageArr.count == 1){
+    if(_imageArr.count == 1 || _imageArr.count == 0){
         return;
     }
     
