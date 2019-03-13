@@ -34,6 +34,7 @@
     
     CGFloat                     _lastContentOffsetX; // 滑动到中间时,偏移量
     BOOL                        _firstSet; // 第一次设置
+    NSInteger                   _indexPathRow;// 屏幕旋转时 记录的下标
 }
 
 /* 临时图片数组 : 将.h 3种类型的数组的内容放入此数组中 */
@@ -74,10 +75,35 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         _kAcount = 100;
+        [self addObserverForScreenRotate];
         [self initializeCollectionView];// 初始化 collectionView
         [self initializeDefaultData];   // 初始化 默认数据
     }
     return self;
+}
+
+- (void)addObserverForScreenRotate{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceWillOrientation)
+                                                 name:UIApplicationWillChangeStatusBarOrientationNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceDidOrientation)
+                                                 name:UIApplicationDidChangeStatusBarOrientationNotification
+                                               object:nil];
+}
+
+- (void)deviceWillOrientation{
+    _indexPathRow = [_collectionView indexPathForCell:_collectionViewCell].row;
+}
+
+- (void)deviceDidOrientation{
+    if(_imageArr.count == 1){
+        return;
+    }
+    
+    [_collectionView setContentOffset:(CGPoint){_indexPathRow * _collectionView.width,0}];
 }
 
 - (void)reloadData{
@@ -384,6 +410,9 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     
     [self addSubview:collectionView];
     _collectionView = collectionView;
+    if (@available(iOS 11.0, *)){
+        _collectionView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -602,24 +631,11 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     if(_viewText){
         _viewText.frame = CGRectMake(0, self.height - TextHeight, self.width,TextHeight);
     }
-    
-    if(_imageArr.count == 1){
-        return;
-    }
-    
-    NSInteger index = _imageArr.count * _kAcount * 0.5;
-    if(!_bannerViewModel.isNeedCycle){
-        index = 0;
-    }
-    
-    [_collectionView setContentOffset:(CGPoint){index * _collectionView.width,0}];
 }
 
 - (void)dealloc{
-    if(DEBUG){
-        // 这里可以测试 BannerView是否能正常销毁
-        // NSLog(@"KNBannerView dealloc");
-    }
+    [self removeTimer];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
