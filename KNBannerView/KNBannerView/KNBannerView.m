@@ -83,26 +83,16 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 }
 
 - (void)addObserverForScreenRotate{
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(deviceWillOrientation)
-                                                 name:UIApplicationWillChangeStatusBarOrientationNotification
-                                               object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceDidOrientation)
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
 }
 
-- (void)deviceWillOrientation{
-    _indexPathRow = [_collectionView indexPathForCell:_collectionViewCell].row;
-}
-
 - (void)deviceDidOrientation{
     if(_imageArr.count == 1){
         return;
     }
-    
     [_collectionView setContentOffset:(CGPoint){_indexPathRow * _collectionView.width,0}];
 }
 
@@ -432,32 +422,26 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
     }else{
         [cell setImage:self.imageArr[row]];
     }
-    
     // 设置背景颜色
     if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
         cell.bgChangeColor = _bannerViewModel.bgChangeColorArr[row];
     }
-    
     if(_firstSet == false){
         _firstSet = true;
         _collectionUseCell = cell;
     }
-    
     if(![cell isSet]){
         [cell setIsSet:YES];
         [cell setBannerViewModel:_bannerViewModel];
     }
-    
     if([_bannerViewModel textShowStyle] == KNBannerViewTextShowStyleNormal){
         if([_bannerViewModel isNeedText]){
             [cell setText:_bannerViewModel.textArr[row]];
         }
     }
-    
     if(_bannerViewModel.leftMargin != 0){
         [cell setLeftMargin:_bannerViewModel.leftMargin];
     }
-    
     if(_bannerViewModel.bannerCornerRadius != 0){
         [cell setBannerCornerRadius:_bannerViewModel.bannerCornerRadius];
     }
@@ -469,6 +453,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     NSInteger row = indexPath.row % [_imageArr count];
+    
     KNBannerCollectionViewCell *cell = (KNBannerCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
     if([_delegate respondsToSelector:@selector(bannerView:collectionView:collectionViewCell:didSelectItemAtIndexPath:)]){
@@ -508,6 +493,8 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         _collectionUseCell = (KNBannerCollectionViewCell *)[_collectionView cellForItemAtIndexPath:path];
         
         [_pageControl setCurrentPage:index]; // 设置 pageControl
+        
+        _indexPathRow = index;
         
         if(![self isEmptyArray:_bannerViewModel.bgChangeColorArr]){
             if([_delegate respondsToSelector:@selector(bannerView:topColor:bottomColor:alpha:isRight:)]){
