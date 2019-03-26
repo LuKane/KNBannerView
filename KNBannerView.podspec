@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "KNBannerView"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "A lightweight and beautiful banner for recycle and adapt rotate screen  "
 
   s.description  = <<-DESC
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.source_files  = "KNBannerView/**/*.{h,m}"
 
   s.requires_arc = true
-  s.dependency 'SDWebImage' "~> 4.0.0"
+  s.dependency 'SDWebImage'
 
 
 end
