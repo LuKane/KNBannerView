@@ -548,6 +548,7 @@ static NSString *const KNCollectionViewID = @"KNBannerViewCollectionViewID";
         [self removeTimer];
     }
     
+    // 创建定时器
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:_bannerViewModel.bannerTimeInterval target:[KNWeekProxy proxyWithTarget:self] selector:@selector(timerRun) userInfo:nil repeats:YES];
     _bannerTimer = timer;
     
