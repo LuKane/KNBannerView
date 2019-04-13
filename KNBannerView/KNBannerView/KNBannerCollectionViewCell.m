@@ -14,7 +14,7 @@
 
 #import "KNBannerCollectionViewCell.h"
 #import "UIView+KNExtension.h"
-#import <UIImageView+WebCache.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "KNBannerViewModel.h"
 #import "KNBannerViewText.h"
 
