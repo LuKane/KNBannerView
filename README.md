@@ -2,7 +2,6 @@
 
 [![CocoaPods](https://img.shields.io/cocoapods/v/KNBannerView.svg)](https://cocoapods.org/pods/KNBannerView.svg)&nbsp;
 [![CocoaPods](https://img.shields.io/cocoapods/p/KNBannerView.svg)](https://github.com/indulgeIn/KNBannerView.svg)&nbsp;
-[![License](https://img.shields.io/github/license/indulgeIn/KNBannerView.svg)](https://github.com/indulgeIn/KNBannerView.svg)&nbsp;
 
 #### 无限循环轮播器:
 * 本地图片
