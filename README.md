@@ -2,7 +2,7 @@
 
 <a href="https://img.shields.io/cocoapods/v/KNBannerView.svg"><img src="https://img.shields.io/cocoapods/v/KNBannerView.svg"></a>
 <a href="http://cocoadocs.org/docsets/KNBannerView"><img 
-src="https://img.shields.io/cocoapods/p/KNBannerView.svg"></a>
+src="https://img.shields.io/cocoapods/p/KNBannerView.svg?style=flat"></a>
 
 #### 无限循环轮播器:
 * 本地图片
