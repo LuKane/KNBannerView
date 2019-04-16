@@ -1,7 +1,8 @@
 # KNBannerView 
 
 #### Pod ~> 2.0.1(之前的版本不可用)
-<a href="https://img.shields.io/cocoapods/v/KNBannerView.svg"></a>
+<a href="https://img.shields.io/cocoapods/v/KNBannerView.svg"><img src="https://img.shields.io/cocoapods/v/KNBannerView.svg"></a>
+
 
 #### 无限循环轮播器:
 * 本地图片
