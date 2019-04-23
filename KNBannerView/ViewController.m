@@ -25,6 +25,7 @@
         [_dataArr addObject:@"KNLocationController"];
         [_dataArr addObject:@"KNBlendController"];
         [_dataArr addObject:@"KNBackGroundController"];
+        [_dataArr addObject:@"KNBlendNetworkController"];
     }
     return _dataArr;
 }
