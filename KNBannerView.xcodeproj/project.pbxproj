@@ -14,6 +14,7 @@
 		3CEB6D331BEC39650020765C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D321BEC39650020765C /* Images.xcassets */; };
 		3CEB6D361BEC39650020765C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CEB6D341BEC39650020765C /* LaunchScreen.xib */; };
 		3CEB6D421BEC39650020765C /* KNBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CEB6D411BEC39650020765C /* KNBannerViewTests.m */; };
+		794DB0D0226F0215006537BF /* KNBlendNetworkController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794DB0CF226F0215006537BF /* KNBlendNetworkController.m */; };
 		79547EC920EF4D8400CAF762 /* KNBackGroundController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79547EC820EF4D8400CAF762 /* KNBackGroundController.m */; };
 		797B3F1E1DDAF95B00204B47 /* KNBannerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F0F1DDAF95B00204B47 /* KNBannerCollectionViewCell.m */; };
 		797B3F211DDAF95B00204B47 /* KNBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 797B3F161DDAF95B00204B47 /* KNBannerView.m */; };
@@ -55,6 +56,8 @@
 		3CEB6D401BEC39650020765C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CEB6D411BEC39650020765C /* KNBannerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNBannerViewTests.m; sourceTree = "<group>"; };
 		5BB979A6D22894A0D123708A /* libPods-KNBannerView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KNBannerView.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		794DB0CE226F0215006537BF /* KNBlendNetworkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNBlendNetworkController.h; sourceTree = "<group>"; };
+		794DB0CF226F0215006537BF /* KNBlendNetworkController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNBlendNetworkController.m; sourceTree = "<group>"; };
 		79547EC720EF4D8400CAF762 /* KNBackGroundController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KNBackGroundController.h; sourceTree = "<group>"; };
 		79547EC820EF4D8400CAF762 /* KNBackGroundController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KNBackGroundController.m; sourceTree = "<group>"; };
 		797B3F0E1DDAF95B00204B47 /* KNBannerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KNBannerCollectionViewCell.h; sourceTree = "<group>"; };
@@ -146,6 +149,7 @@
 				797B3F5F1DDAFA2A00204B47 /* NetWork */,
 				797B3F5E1DDAFA2A00204B47 /* Location */,
 				797B3F5D1DDAFA2A00204B47 /* Blend(混合) */,
+				794DB0CD226F01FC006537BF /* Blend(模仿网络请求) */,
 				797B3F0D1DDAF95B00204B47 /* KNBannerView */,
 				3CEB6D2F1BEC39650020765C /* Main.storyboard */,
 				3CEB6D321BEC39650020765C /* Images.xcassets */,
@@ -179,6 +183,15 @@
 				3CEB6D401BEC39650020765C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		794DB0CD226F01FC006537BF /* Blend(模仿网络请求) */ = {
+			isa = PBXGroup;
+			children = (
+				794DB0CE226F0215006537BF /* KNBlendNetworkController.h */,
+				794DB0CF226F0215006537BF /* KNBlendNetworkController.m */,
+			);
+			path = "Blend(模仿网络请求)";
 			sourceTree = "<group>";
 		};
 		79547EC620EF4D6B00CAF762 /* BackGround */ = {
@@ -381,6 +394,7 @@
 				79FB5373202DA7D60083D6D2 /* KNWeekProxy.m in Sources */,
 				797B3F6B1DDAFAF300204B47 /* KNRootController.m in Sources */,
 				797B3F241DDAF95B00204B47 /* KNBannerViewText.m in Sources */,
+				794DB0D0226F0215006537BF /* KNBlendNetworkController.m in Sources */,
 				3CEB6D2B1BEC39650020765C /* AppDelegate.m in Sources */,
 				797B3F211DDAF95B00204B47 /* KNBannerView.m in Sources */,
 				79F0856E20B6AD5400D766BC /* KNBannerPageControl.m in Sources */,
