@@ -48,10 +48,10 @@
     [self setupNav];
     
     // 可以在网络请求之后,再创建 banner, 也可以 提前创建 banner : 记得刷新就行
-    // 如果有缓存,则先创建 banner, 在家在缓存... 在网络请求.. 再刷新
+    // 如果有缓存,则先创建 banner, 在加载缓存... 再网络请求.. 再刷新
     // 这里的Demo : 没有缓存 , 先创建一个 空的banner, 网络请求, 再刷新
     
-    // BannerView3 的占位图 是一张 风景图
+    // 注意:BannerView3 的占位图 是一张 风景图
     
     [self setupNetWorkBannerView1];
     [self setupNetWorkBannerView2];
