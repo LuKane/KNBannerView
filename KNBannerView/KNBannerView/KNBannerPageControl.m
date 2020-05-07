@@ -76,6 +76,7 @@
     }else if(![self isEmptyArray:[_bannerViewModel pageControlImgArr]]){
         [_customPageControl setCurrentPage:currentPage];
     }
+    _bannerViewModel.currentPage = currentPage;
 }
 
 - (void)layoutSubviews{
